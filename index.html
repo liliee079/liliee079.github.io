@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title data-i18n="page_title">李梓琪 · 产品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32,wght@400,500,600,700&family=Caveat:wght@400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+    --bg:#F8FAFC;
+    --card-bg:rgba(255,255,255,0.85);
+    --card-border:rgba(168,200,216,0.3);
+    --accent:#A8C8D8;
+    --accent-pink:#E8B4BC;
+    --accent-blue:#7BA7C4;
+    --ink:#2A1A1A;
+    --ink-soft:#5A4A4A;
+    --ink-light:#8A7A7A;
+    --ink-lighter:rgba(0,0,0,0.10);
+    --card-ink:#2A1A1A;
+    --card-ink-soft:#5A4A4A;
+    --card-ink-light:#8A7A7A;
+    --radius:12px;
+}
+html{scroll-behavior:smooth;}
+body{
+    font-family:"Inter",-apple-system,"PingFang SC",sans-serif;
+    background:var(--bg);color:var(--ink);
+    overflow:hidden;height:100vh;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"),
+        radial-gradient(ellipse at 60% 40%, rgba(168,200,216,0.6) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 60%, rgba(123,167,196,0.45) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(168,200,216,0.3) 0%, transparent 45%),
+        linear-gradient(180deg, #FFFFFF 0%, #F0F7FA 50%, #E8F1F5 100%);
+    background-blend-mode: overlay, normal, normal, normal, normal;
+}
+/* Grain texture overlay */
+body::after{
+    content:'';position:fixed;inset:0;z-index:9999;
+    pointer-events:none;opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat:repeat;background-size:256px 256px;
+}
+
+/* ===== Nav Bar ===== */
+.nav-bar{
+    position:fixed;top:24px;right:32px;z-index:200;
+    display:flex;gap:8px;
+    background:transparent;
+    padding:0;border-radius:0;
+    border:none;
+}
+.nav-bar .nv{
+    padding:8px 20px;border-radius:20px;
+    font-size:13px;font-weight:600;color:#fff;
+    cursor:pointer;transition:all 0.3s;font-family:inherit;border:none;
+    background:rgba(168,200,216,0.85);
+    text-transform:none;letter-spacing:0.3px;
+}
+.nav-bar .nv:hover{background:rgba(123,167,196,0.9);transform:scale(1.05);}
+.nav-bar .nv.active{background:rgba(123,167,196,0.95);box-shadow:0 4px 12px rgba(123,167,196,0.4);}
+.nav-bar .nv.active::after{
+    content:'';display:none;
+}
+@keyframes navStar{
+    0%,100%{transform:translateY(0) rotate(0deg);opacity:0.6;}
+    50%{transform:translateY(-3px) rotate(20deg);opacity:1;}
+}
+
+@keyframes toastFade{
+    0%{opacity:0;transform:translate(-50%,-50%) scale(0.9);}
+    20%{opacity:1;transform:translate(-50%,-50%) scale(1.05);}
+    30%{transform:translate(-50%,-50%) scale(1);}
+    80%{opacity:1;}
+    100%{opacity:0;transform:translate(-50%,-50%) scale(0.95);}
+}
+
+/* ===== Retro Cut-out Decor ===== */
+
+.retro-deco{
+    position:fixed;pointer-events:none;z-index:0;
+    color:rgba(42,26,26,0.08);
+    font-family:"Caveat",cursive;
+}
+.retro-deco.rd-1{left:5%;top:12%;font-size:60px;transform:rotate(-8deg);}
+.retro-deco.rd-2{right:8%;bottom:18%;font-size:50px;transform:rotate(12deg);}
+.retro-deco.rd-3{left:12%;bottom:30%;font-size:40px;transform:rotate(-5deg);}
+.retro-deco.rd-4{right:5%;top:40%;font-size:35px;transform:rotate(10deg);}
+.retro-deco.rd-5{left:50%;top:5%;font-size:28px;transform:translateX(-50%) rotate(-3deg);}
+
+.retro-star{
+    position:fixed;pointer-events:none;z-index:0;
+    font-size:14px;color:rgba(42,26,26,0.09);
+    animation:rs 4s ease-in-out infinite;
+}
+@keyframes rs{
+    0%,100%{transform:translateY(0) rotate(0deg) scale(1);}
+    50%{transform:translateY(-10px) rotate(25deg) scale(1.1);}
+}
+.retro-star.rs-1{left:20%;top:25%;animation-delay:0s;}
+.retro-star.rs-2{right:25%;top:60%;animation-delay:1.5s;}
+.retro-star.rs-3{left:60%;bottom:15%;animation-delay:3s;}
+.retro-star.rs-4{right:10%;top:20%;animation-delay:0.8s;font-size:10px;}
+
+/* Retro Arrows (Memphis-style line decor) */
+.retro-arrow{
+    position:fixed;pointer-events:none;z-index:0;
+    color:rgba(42,26,26,0.08);
+    font-size:24px;font-weight:300;
+}
+.retro-arrow.ra-1{left:8%;bottom:12%;transform:rotate(-15deg);}
+.retro-arrow.ra-2{right:6%;top:30%;transform:rotate(25deg);font-size:20px;}
+.retro-arrow.ra-3{left:45%;top:8%;transform:rotate(-5deg);font-size:16px;}
+.retro-arrow.ra-4{right:15%;bottom:25%;transform:rotate(40deg);font-size:18px;}
+.retro-arrow.ra-5{left:3%;top:45%;transform:rotate(90deg);font-size:14px;}
+
+/* Pen nib decor */
+.pen-nib-deco{
+    position:fixed;pointer-events:none;z-index:0;
+    color:rgba(42,26,26,0.07);
+    font-size:32px;left:48%;top:6%;
+    transform:translateX(-50%) rotate(-10deg);
+    font-family:"Caveat",cursive;
+}
+
+/* Graphic Designer tag */
+.gd-tag{
+    position:fixed;z-index:0;pointer-events:none;
+    font-size:10px;font-weight:700;color:rgba(42,26,26,0.12);
+    text-transform:uppercase;letter-spacing:2px;
+    right:6%;bottom:10%;
+    transform:rotate(-3deg);
+}
+
+/* Dashed cut-out line decor */
+.cut-line{
+    position:fixed;pointer-events:none;z-index:0;
+    border-top:1px dashed rgba(42,26,26,0.10);
+    width:80px;
+}
+.cut-line.cl-1{left:15%;top:35%;transform:rotate(-20deg);width:60px;}
+.cut-line.cl-2{right:20%;bottom:30%;transform:rotate(15deg);width:70px;}
+.cut-line.cl-3{left:55%;bottom:10%;transform:rotate(-10deg);width:50px;}
+
+/* ===== Side Nav ===== */
+.side-nav{
+    position:fixed;top:50%;z-index:100;
+    transform:translateY(-50%);
+    width:36px;height:36px;border-radius:0;
+    border:1px solid var(--card-border);
+    background:rgba(255,255,255,0.6);
+    color:var(--ink-light);font-size:13px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:all 0.3s;
+}
+.side-nav:hover{color:var(--ink);border-color:rgba(0,0,0,0.2);background:rgba(255,255,255,0.9);transform:translateY(-50%) scale(1.04);}
+.side-nav:active{transform:translateY(-50%) scale(0.92);}
+.side-nav.left{left:16px;}
+.side-nav.right{right:16px;}
+
+.bottom-dots{
+    position:fixed;bottom:24px;left:50%;z-index:100;
+    transform:translateX(-50%);
+    display:flex;gap:8px;
+    background:rgba(255,255,255,0.6);
+    padding:6px 18px;
+    border:1px solid var(--card-border);
+}
+.bottom-dots .d{
+    width:5px;height:5px;border-radius:0;
+    background:rgba(0,0,0,0.15);cursor:pointer;
+    transition:all 0.35s;border:none;transform:rotate(45deg);
+}
+.bottom-dots .d.active{
+    background:var(--ink);
+    transform:scale(1.6) rotate(45deg);
+}
+
+/* ===== Sections ===== */
+.sections-wrap{
+    position:fixed;inset:0;z-index:1;
+    display:flex;flex-direction:column;
+    transition:transform 0.65s cubic-bezier(0.65,0,0.35,1);
+    will-change:transform;
+}
+.section{
+    height:100vh;width:100vw;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    padding:40px 56px;position:relative;
+}
+
+/* ===== Content Card ===== */
+.content-card{
+    width:100%;max-width:960px;
+    max-height:86vh;overflow-y:auto;
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-radius:20px;
+    padding:40px 48px;
+    border:1px solid rgba(255,255,255,0.8);
+    position:relative;
+    box-shadow:0 8px 32px rgba(168,200,216,0.15);
+}
+.content-card::before{
+    content:'';display:none;
+}
+.content-card::after{
+    content:'';display:none;
+}
+.content-card::-webkit-scrollbar{width:3px;}
+.content-card::-webkit-scrollbar-thumb{background:var(--card-ink-light);}
+
+/* ===== Section Header ===== */
+.sec-h{
+    text-align:center;margin-bottom:20px;
+}
+.sec-h .label{
+    font-family:"Caveat",cursive;font-size:20px;
+    color:var(--accent-pink);display:block;margin-bottom:-2px;
+}
+.sec-h h2{
+    font-size:22px;font-weight:700;color:var(--card-ink);
+    letter-spacing:0.5px;text-transform:uppercase;
+}
+.sec-h .line{
+    width:32px;height:2px;margin:6px auto 0;
+    background:var(--card-ink);border-radius:0;
+}
+
+/* ===== ABOUT ME ===== */
+.ab-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.ph-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;}
+
+.photo-box{
+    position:relative;width:220px;height:220px;flex-shrink:0;
+}
+.photo-box .pf{
+    width:170px;height:170px;border-radius:50%;
+    overflow:hidden;position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);z-index:5;
+    border:6px solid #fff;
+    box-shadow:0 10px 40px rgba(168,200,216,0.4);
+    cursor:pointer;
+    transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.photo-box .pf:hover{transform:translate(-50%,-50%) scale(1.05);}
+.photo-box .pf img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* Personality Bubbles */
+.photo-box .pb{
+    position:absolute;
+    background:var(--card-bg);
+    border:1.5px solid rgba(0,0,0,0.10);
+    padding:8px 12px;
+    font-size:11px;font-weight:600;color:var(--card-ink);
+    border-radius:20px;
+    opacity:0;
+    transform:scale(0.8) translateY(10px);
+    pointer-events:none;
+    transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    z-index:4;
+    box-shadow:2px 2px 8px rgba(0,0,0,0.08);
+    white-space:nowrap;
+}
+.photo-box .pb::before{
+    content:'';position:absolute;
+    width:0;height:0;
+    border-style:solid;
+}
+.photo-box:hover .pb,
+.photo-box .pf:hover + .pb,
+.photo-box .pf:hover ~ .pb{
+    opacity:1;
+    transform:scale(1) translateY(0);
+}
+.photo-box .pb.pb-1{top:-18%;left:46%;transform-origin:bottom center;}
+.photo-box .pb.pb-1::before{bottom:-6px;left:50%;transform:translateX(-50%);border-width:6px 6px 0;border-color:var(--card-bg) transparent transparent;}
+.photo-box .pb.pb-2{top:25%;right:-40%;transform-origin:left center;}
+.photo-box .pb.pb-2::before{bottom:-6px;left:20%;border-width:6px 6px 0;border-color:var(--card-bg) transparent transparent;}
+.photo-box .pb.pb-3{top:55%;right:-45%;transform-origin:left center;}
+.photo-box .pb.pb-3::before{bottom:-6px;left:30%;border-width:6px 6px 0;border-color:var(--card-bg) transparent transparent;}
+.photo-box .pb.pb-4{top:90%;left:-40%;transform-origin:right center;}
+.photo-box .pb.pb-4::before{bottom:-6px;right:30%;border-width:6px 6px 0;border-color:var(--card-bg) transparent transparent;}
+.photo-box .pb.pb-5{top:25%;left:-45%;transform-origin:right center;}
+.photo-box .pb.pb-5::before{bottom:-6px;right:25%;border-width:6px 6px 0;border-color:var(--card-bg) transparent transparent;}
+.photo-box .pb.pb-6{top:60%;left:-45%;transform-origin:right center;}
+.photo-box .pb.pb-6::before{bottom:-6px;right:20%;border-width:6px 6px 0;border-color:var(--card-bg) transparent transparent;}
+
+/* Bubble colors */
+.photo-box .pb.highlight{background:var(--accent-pink);color:var(--card-ink);border-color:var(--accent-pink);}
+.photo-box .pb.highlight::before{border-color:var(--accent-pink) transparent transparent;}
+.photo-box .pb.blue{background:var(--accent-blue);color:var(--card-ink);border-color:var(--accent-blue);}
+.photo-box .pb.blue::before{border-color:var(--accent-blue) transparent transparent;}
+.photo-box .pb.warm{background:var(--accent);color:var(--card-ink);border-color:var(--accent);}
+.photo-box .pb.warm::before{border-color:var(--accent) transparent transparent;}
+
+.photo-box .ap{
+    position:absolute;z-index:3;pointer-events:none;
+    transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    border-radius:50%;
+}
+.photo-box:hover .ap{transform:rotate(0deg) scale(1);}
+.photo-box .ap.p1{width:30px;height:30px;background:rgba(168,200,216,0.3);border:none;top:5%;right:15%;transform:rotate(-12deg);}
+.photo-box .ap.p2{width:20px;height:20px;background:rgba(123,167,196,0.4);border:none;bottom:15%;left:10%;transform:rotate(16deg);}
+.photo-box .ap.p3{width:15px;height:15px;background:rgba(232,180,188,0.4);border:none;top:25%;left:-5%;transform:rotate(-20deg);}
+.photo-box .ap.p4{width:25px;height:25px;background:rgba(168,200,216,0.25);border:none;bottom:-3%;right:5%;transform:rotate(8deg);}
+.photo-box .ap.p5{width:12px;height:12px;background:rgba(232,180,188,0.5);border:none;top:60%;right:-3%;transform:translateY(-50%) rotate(-12deg);display:flex;align-items:center;justify-content:center;font-size:6px;color:#fff;font-weight:700;}
+
+.txt-box{text-align:center;max-width:580px;}
+.txt-box .hello{font-size:34px;font-weight:800;color:var(--card-ink);line-height:1.1;margin-bottom:2px;letter-spacing:-0.3px;text-transform:uppercase;}
+.txt-box .sub{font-size:13px;font-weight:600;color:var(--card-ink-soft);margin-bottom:6px;letter-spacing:0.3px;}
+.txt-box .bio{font-size:12px;color:var(--card-ink-soft);line-height:1.8;}
+
+/* Copy email button */
+.copy-email-wrap{display:flex;align-items:center;gap:0;margin-top:12px;justify-content:center;position:relative;}
+.copy-email-wrap::before{
+    content:'';display:none;
+}
+.copy-email-wrap .ce-input{
+    padding:8px 16px;border:1.5px solid rgba(168,200,216,0.5);
+    background:rgba(255,255,255,0.7);font-family:inherit;font-size:13px;
+    color:#3A4A5A;outline:none;width:200px;letter-spacing:0.5px;
+    border-radius:10px 0 0 10px;
+    transition:all 0.3s;
+}
+.copy-email-wrap .ce-input:focus{border-color:var(--accent-blue);box-shadow:0 0 0 2px rgba(168,200,216,0.3);}
+.copy-email-wrap .ce-btn{
+    padding:8px 18px;border:1.5px solid rgba(232,180,188,0.8);
+    border-left:none;background:rgba(232,180,188,0.8);color:#3A4A5A;
+    font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;
+    transition:all 0.3s;letter-spacing:0.5px;text-transform:none;
+    border-radius:0 10px 10px 0;
+    display:flex;align-items:center;gap:5px;
+}
+.copy-email-wrap .ce-btn:hover{background:rgba(232,180,188,1);transform:scale(1.02);}
+.copy-email-wrap .ce-btn.copied{background:var(--accent-blue);border-color:var(--accent-blue);color:#fff;}
+.copy-email-wrap .ce-btn.copied i{animation:copiedPulse 0.5s ease;}
+@keyframes copiedPulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.3);}
+}
+
+/* Mailbox icon */
+.mailbox-icon{
+    position:fixed;right:40px;bottom:60px;z-index:150;
+    width:80px;height:140px;
+    cursor:pointer;
+    transition:transform 0.3s;
+}
+.mailbox-icon:hover{transform:scale(1.05);}
+.mailbox-icon .mailbox-tip{
+    position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);
+    font-size:11px;color:#6A7A8A;font-weight:500;
+    white-space:nowrap;
+    opacity:0;
+    transition:opacity 0.3s;
+    text-align:center;
+}
+.mailbox-icon:hover .mailbox-tip{opacity:1;}
+.mailbox-icon .mailbox{
+    position:relative;
+}
+.mailbox-icon .mailbox-body{
+    width:60px;height:45px;
+    background:#E85D4C;
+    border-radius:8px 8px 0 0;
+    position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+    box-shadow:0 4px 8px rgba(232,93,76,0.3);
+}
+.mailbox-icon .mailbox-body::before{
+    content:'';position:absolute;top:-8px;right:-15px;
+    width:12px;height:30px;
+    background:#E85D4C;
+    border-radius:3px;
+}
+.mailbox-icon .mailbox-body::after{
+    content:'';position:absolute;top:-8px;right:-15px;
+    width:20px;height:10px;
+    background:#E85D4C;
+    border-radius:3px;
+    transform:rotate(-30deg);
+    transform-origin:left top;
+}
+.mailbox-icon .mailbox-flag{
+    position:absolute;top:-20px;right:-10px;
+    width:25px;height:18px;
+    background:#F4A7B8;
+    border-radius:0 5px 5px 0;
+    transform:rotate(-20deg);
+    animation:flagWave 2s ease-in-out infinite;
+}
+@keyframes flagWave{
+    0%,100%{transform:rotate(-20deg);}
+    50%{transform:rotate(-15deg);}
+}
+.mailbox-icon .mailbox-door{
+    width:45px;height:25px;
+    background:#D44F40;
+    border-radius:0 0 5px 5px;
+    position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+}
+.mailbox-icon .mailbox-door::before{
+    content:'';position:absolute;top:50%;right:5px;
+    width:8px;height:8px;
+    background:#8B4513;
+    border-radius:50%;
+    transform:translateY(-50%);
+}
+.mailbox-icon .mailbox-post{
+    width:20px;height:60px;
+    background:#8B4513;
+    position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);
+    border-radius:3px;
+}
+.mailbox-icon .mailbox-post::after{
+    content:'';position:absolute;bottom:-15px;left:-15px;
+    width:50px;height:15px;
+    background:#A0522D;
+    border-radius:50%;
+}
+.mailbox-icon .mail-letter{
+    position:absolute;bottom:35px;left:50%;transform:translateX(-50%);
+    width:35px;height:25px;
+    background:#FFE4C4;
+    border-radius:3px;
+    animation:letterBounce 2s ease-in-out infinite;
+}
+.mailbox-icon .mail-letter::before{
+    content:'';position:absolute;top:50%;left:50%;
+    width:15px;height:15px;
+    border-left:2px solid #DEB887;
+    border-bottom:2px solid #DEB887;
+    transform:translate(-50%,-50%) rotate(-45deg);
+}
+@keyframes letterBounce{
+    0%,100%{transform:translateX(-50%) translateY(0);}
+    50%{transform:translateX(-50%) translateY(-8px);}
+}
+
+.vibe-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;max-width:700px;margin-top:20px;
+    padding-bottom:0;
+}
+.vb{
+    background:rgba(168,200,216,0.5);padding:20px 16px 18px;
+    border:none;
+    text-align:center;cursor:pointer;
+    transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);position:relative;
+    border-radius:16px;
+    min-height:150px;
+}
+.vb:hover{transform:translate(-3px,-3px);box-shadow:0 8px 24px rgba(168,200,216,0.4);}
+.vb:active{transform:translate(1px,1px);}
+
+/* VB Header with icon */
+.vb .vb-header{
+    display:flex;flex-direction:column;align-items:center;margin-bottom:10px;
+}
+.vb .ico{font-size:32px;display:block;margin-bottom:6px;transition:transform 0.3s;}
+.vb:hover .ico{transform:scale(1.1);}
+.vb h4{font-size:16px;font-weight:700;color:#3A4A5A;text-transform:none;letter-spacing:0.2px;margin-bottom:3px;}
+
+/* VB Tagline */
+.vb .tg{font-size:12px;font-weight:600;color:#5A6A7A;margin-top:2px;display:block;letter-spacing:0.2px;}
+.vb .tg-sub{font-size:9px;font-weight:500;color:#8A9AA9;display:block;margin-top:3px;letter-spacing:0.3px;text-transform:uppercase;}
+
+/* VB Stats */
+.vb .vb-stats{
+    display:none;
+}
+
+/* VB Description */
+.vb .vb-desc{
+    font-size:10px;color:#6A7A8A;line-height:1.6;margin-top:8px;
+}
+
+/* VB Arrow */
+.vb .vb-arrow{
+    display:none;
+}
+
+/* VB Interactive Tip */
+.vb .vb-interact-tip{
+    position:absolute;top:8px;right:8px;z-index:5;
+    font-size:8px;padding:2px 6px;
+    background:var(--accent-pink);color:var(--card-bg);font-weight:600;letter-spacing:0.3px;
+    animation:vbTipPulse 2s ease-in-out infinite;
+}
+@keyframes vbTipPulse{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.7;transform:scale(0.95);}
+}
+
+/* Demo video button */
+.vb .demo-btn{
+    position:absolute;top:8px;right:8px;z-index:5;
+    width:20px;height:20px;border-radius:50%;
+    border:1.5px solid var(--accent-pink);
+    background:var(--accent-pink);
+    color:var(--card-ink);font-size:8px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:all 0.25s;
+    opacity:0.8;
+}
+.vb .demo-btn:hover{background:var(--card-ink);color:#fff;border-color:var(--card-ink);transform:scale(1.1);}
+
+/* ===== CHAT DEMO ===== */
+.chat-demo-wrap{
+    margin-top:14px;border:1.5px solid rgba(0,0,0,0.10);
+    background:var(--card-bg);overflow:hidden;
+    box-shadow:3px 3px 0 rgba(0,0,0,0.06);
+}
+.chat-demo-header{
+    display:flex;align-items:center;gap:8px;
+    padding:12px 14px;cursor:pointer;
+    background:rgba(168,200,216,0.08);
+    transition:all 0.25s;user-select:none;
+}
+.chat-demo-header:hover{background:rgba(168,200,216,0.15);}
+.chat-demo-header .cdh-icon{font-size:16px;}
+.chat-demo-header .cdh-title{font-size:12px;font-weight:700;color:#3A4A5A;flex:1;text-transform:uppercase;letter-spacing:0.3px;}
+.chat-demo-header .cdh-badge{
+    font-size:9px;padding:2px 8px;border-radius:0;
+    background:var(--accent-pink);color:var(--card-bg);font-weight:600;letter-spacing:0.3px;
+}
+.chat-demo-header .cdh-arrow{font-size:10px;color:var(--card-ink-light);transition:transform 0.3s;}
+.chat-demo-header.open .cdh-arrow{transform:rotate(180deg);}
+.chat-demo-body{
+    display:none;padding:0;
+    border-top:1px solid rgba(0,0,0,0.06);
+}
+.chat-demo-body.open{display:block;}
+.chat-messages{
+    max-height:420px;overflow-y:auto;padding:14px;
+    display:flex;flex-direction:column;gap:10px;
+}
+.chat-messages::-webkit-scrollbar{width:4px;}
+.chat-messages::-webkit-scrollbar-track{background:transparent;}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(168,200,216,0.3);}
+.chat-msg{
+    display:flex;gap:8px;max-width:85%;
+    animation:msgIn 0.35s ease-out;
+}
+.chat-msg.user{flex-direction:row-reverse;align-self:flex-end;}
+.chat-msg.agent{align-self:flex-start;}
+@keyframes msgIn{
+    from{opacity:0;transform:translateY(8px);}
+    to{opacity:1;transform:translateY(0);}
+}
+.chat-msg .cm-avatar{
+    width:30px;height:30px;border-radius:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;flex-shrink:0;
+    background:rgba(168,200,216,0.15);
+}
+.chat-msg.user .cm-avatar{background:rgba(252,176,188,0.2);}
+.chat-msg .cm-body{
+    padding:8px 10px;font-size:11px;line-height:1.6;
+    background:rgba(168,200,216,0.08);border-radius:0;
+    border:1px solid rgba(168,200,216,0.15);
+}
+.chat-msg.user .cm-body{
+    background:rgba(252,176,188,0.08);
+    border-color:rgba(252,176,188,0.2);
+}
+.chat-msg .cm-name{font-size:9px;font-weight:700;color:#7BA7C4;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.3px;}
+.chat-msg.user .cm-name{color:#d4899a;}
+.chat-msg .cm-text{color:#4A5A6A;}
+.chat-msg .cm-text strong{color:#3A4A5A;}
+.chat-input{
+    padding:8px 14px 14px;display:flex;flex-wrap:wrap;gap:6px;
+}
+.chat-input .ci-btn{
+    padding:6px 12px;font-size:10px;font-weight:600;
+    border:1.5px solid rgba(168,200,216,0.3);
+    background:rgba(168,200,216,0.06);color:#4A5A6A;
+    cursor:pointer;transition:all 0.25s;
+    letter-spacing:0.2px;
+}
+.chat-input .ci-btn:hover{
+    background:rgba(168,200,216,0.15);
+    border-color:rgba(168,200,216,0.4);
+    transform:translateX(2px);
+}
+.chat-input .ci-btn.primary{
+    background:var(--accent-pink);color:var(--card-bg);border-color:var(--accent-pink);
+}
+.chat-input .ci-btn.primary:hover{opacity:0.85;background:var(--accent-pink);}
+.chat-input .ci-input-wrap{
+    display:flex;width:100%;gap:0;margin-top:4px;
+}
+.chat-input .ci-input{
+    flex:1;padding:6px 10px;font-size:11px;font-family:inherit;
+    border:1.5px solid rgba(168,200,216,0.3);
+    background:rgba(168,200,216,0.04);color:#4A5A6A;outline:none;border-radius:0;
+    transition:border-color 0.25s;
+}
+.chat-input .ci-input:focus{border-color:rgba(168,200,216,0.6);}
+.chat-input .ci-input::placeholder{color:#9AAAB9;font-size:10px;}
+.chat-input .ci-send{
+    padding:6px 12px;font-size:11px;
+    border:1.5px solid rgba(168,200,216,0.3);border-left:none;
+    background:rgba(168,200,216,0.1);color:#7BA7C4;
+    cursor:pointer;transition:all 0.25s;border-radius:0;
+}
+.chat-input .ci-send:hover{background:rgba(168,200,216,0.2);}
+.chat-reset{
+    padding:0 14px 14px;text-align:center;
+}
+.chat-reset button{
+    padding:5px 14px;font-size:10px;font-weight:600;
+    border:1.5px solid rgba(168,200,216,0.3);
+    background:transparent;color:#7BA7C4;
+    cursor:pointer;transition:all 0.25s;letter-spacing:0.3px;
+}
+.chat-reset button:hover{background:rgba(168,200,216,0.1);}
+.chat-msg .cm-card{
+    background:rgba(168,200,216,0.08);padding:8px 10px;margin-top:6px;
+    border:1px solid rgba(168,200,216,0.15);
+}
+.chat-msg .cm-card-item{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:5px 0;border-bottom:1px solid rgba(168,200,216,0.1);
+    font-size:10px;
+}
+.chat-msg .cm-card-item:last-child{border-bottom:none;}
+.chat-msg .cmi-rank{font-weight:800;color:#7BA7C4;min-width:20px;}
+.chat-msg .cmi-name{color:#3A4A5A;flex:1;font-weight:600;}
+.chat-msg .cmi-name a,
+.chat-msg a.cmi-name{color:#3A4A5A;flex:1;font-weight:600;text-decoration:none;border-bottom:1px dashed rgba(168,200,216,0.3);cursor:pointer;transition:all 0.25s;}
+.chat-msg a.cmi-name:hover{color:#7BA7C4;border-bottom-color:#7BA7C4;}
+.chat-msg .cmi-score{color:#5A6A7A;}
+.chat-msg .cmi-tag{
+    font-size:8px;padding:1px 6px;background:rgba(168,200,216,0.15);color:#7BA7C4;
+}
+.chat-msg .cm-loading{
+    display:flex;gap:4px;padding:4px 0;
+}
+.chat-msg .cm-loading span{
+    width:6px;height:6px;border-radius:50%;
+    background:rgba(168,200,216,0.4);
+    animation:loadDot 1.2s infinite;
+}
+.chat-msg .cm-loading span:nth-child(2){animation-delay:0.2s;}
+.chat-msg .cm-loading span:nth-child(3){animation-delay:0.4s;}
+@keyframes loadDot{
+    0%,80%,100%{transform:scale(0.5);opacity:0.4;}
+    40%{transform:scale(1);opacity:1;}
+}
+.chat-msg .cm-checklist{
+    margin:4px 0;padding:0;list-style:none;
+}
+.chat-msg .cm-checklist li{
+    padding:3px 0;font-size:10px;color:#4A5A6A;
+    display:flex;align-items:center;gap:6px;
+}
+.chat-msg .cm-checklist li::before{content:'▸';color:#7BA7C4;font-weight:700;}
+
+/* ===== EXPERIENCE: Problem → Method → Result ===== */
+.exp-list{display:flex;flex-direction:column;gap:14px;}
+.exp-card{
+    background:var(--card-bg);border:1.5px solid rgba(0,0,0,0.10);
+    padding:14px 16px;position:relative;
+    box-shadow:3px 3px 0 rgba(0,0,0,0.06);
+}
+.exp-card .ec-h{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    flex-wrap:wrap;gap:4px;margin-bottom:6px;cursor:pointer;
+}
+.exp-card .ec-h h3{font-size:14px;font-weight:800;color:var(--card-ink);flex:1;text-transform:uppercase;letter-spacing:0.2px;}
+.exp-card .ec-h .dt{
+    font-family:"Caveat",cursive;font-size:13px;color:var(--card-ink-soft);white-space:nowrap;
+}
+.exp-card .ec-role{font-size:11px;font-weight:700;color:var(--card-ink-soft);margin-bottom:6px;letter-spacing:0.3px;text-transform:uppercase;}
+
+.pmr{display:flex;flex-direction:column;gap:6px;}
+.pmr .block{padding:5px 8px;background:rgba(0,0,0,0.02);border-left:3px solid rgba(0,0,0,0.15);}
+.pmr .block.q{border-left-color:var(--accent-pink);}
+.pmr .block.m{border-left-color:var(--accent-blue);}
+.pmr .block.r{border-left-color:var(--card-ink-soft);}
+
+.pmr .block .bl-h{
+    font-size:12px;font-weight:700;color:var(--card-ink);margin-bottom:3px;display:flex;align-items:center;gap:5px;
+}
+.pmr .block .bl-h .icon{font-size:12px;}
+.pmr .block .bl-h .tag{
+    font-size:9px;font-weight:700;padding:0 5px;letter-spacing:0.3px;text-transform:uppercase;
+}
+.pmr .block.q .bl-h .tag{background:var(--accent-pink);color:var(--card-ink);}
+.pmr .block.m .bl-h .tag{background:var(--accent-blue);color:var(--card-ink);}
+.pmr .block.r .bl-h .tag{background:var(--card-ink-soft);color:var(--card-bg);}
+
+.pmr .block .bl-body{font-size:11px;color:var(--card-ink-soft);line-height:1.7;}
+.pmr .arrow-item{
+    display:flex;gap:5px;align-items:flex-start;
+    padding:2px 0 2px 2px;
+}
+.pmr .arrow-item .arr{
+    color:var(--card-ink-light);font-size:10px;margin-top:3px;flex-shrink:0;width:12px;text-align:center;
+}
+.pmr .arrow-item .arr-2{color:var(--card-ink-light);font-size:9px;margin-top:3px;flex-shrink:0;width:18px;text-align:center;padding-left:12px;}
+.pmr .arrow-item .at{font-size:11px;color:var(--card-ink-soft);line-height:1.7;}
+.pmr .arrow-item .at strong{color:var(--card-ink);font-weight:800;}
+
+.ec-expand{
+    max-height:0;overflow:hidden;
+    transition:max-height 0.45s cubic-bezier(0.4,0,0.2,1),opacity 0.35s,margin 0.35s;
+    opacity:0;margin-top:0;
+}
+.ec-expand.open{max-height:800px;opacity:1;margin-top:6px;}
+
+.ec-btn{
+    display:inline-flex;align-items:center;gap:3px;
+    margin-top:5px;padding:3px 10px;border:1.5px solid rgba(0,0,0,0.12);
+    background:var(--card-bg);font-size:10px;font-weight:700;color:var(--card-ink-soft);
+    cursor:pointer;transition:all 0.25s;font-family:inherit;text-transform:uppercase;letter-spacing:0.5px;
+}
+.ec-btn:hover{color:var(--card-ink);background:var(--card-ink);color:var(--card-bg);}
+.ec-btn i{font-size:9px;transition:transform 0.3s;}
+.ec-btn.open i{transform:rotate(180deg);}
+
+/* ===== SOFT SKILLS ===== */
+.skill-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.skill-col h3{
+    font-size:13px;font-weight:700;color:var(--card-ink);margin-bottom:8px;
+    display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:0.5px;
+}
+.soft-item{
+    display:flex;gap:10px;padding:10px;margin-bottom:8px;
+    background:rgba(168,200,216,0.08);border-radius:10px;
+    transition:all 0.3s;cursor:pointer;
+}
+.soft-item:hover{
+    background:rgba(168,200,216,0.15);transform:translateX(4px);
+}
+.soft-icon{
+    font-size:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+    background:rgba(168,200,216,0.2);border-radius:8px;flex-shrink:0;
+}
+.soft-content{flex:1;}
+.soft-title{
+    font-size:12px;font-weight:600;color:#3A4A5A;margin-bottom:2px;
+}
+.soft-desc{
+    font-size:10px;color:#6A7A8A;line-height:1.5;
+}
+.soft-summary{
+    display:flex;justify-content:space-around;margin-top:20px;padding-top:16px;
+    border-top:1px dashed rgba(168,200,216,0.3);
+}
+.soft-stat{text-align:center;}
+.soft-stat .stat-num{
+    font-size:20px;font-weight:800;color:#7BA7C4;display:block;
+}
+.soft-stat .stat-label{
+    font-size:10px;color:#8A9AA9;margin-top:2px;
+}
+.skill-col h3 .dot{width:6px;height:6px;display:inline-block;}
+.skill-col h3 .dot.dr{background:var(--accent-pink);}
+.skill-col h3 .dot.dg{background:var(--accent-blue);}
+
+.tag-grid{display:flex;flex-wrap:wrap;gap:4px;}
+.tag{
+    padding:3px 10px;border-radius:0;
+    background:var(--card-bg);border:1.5px solid rgba(0,0,0,0.12);
+    font-size:10px;font-weight:600;color:var(--card-ink-soft);
+    cursor:pointer;user-select:none;
+    transition:all 0.2s;
+    transform:rotate(var(--r,0deg));
+}
+.tag:hover{transform:rotate(0deg) scale(1.04);border-color:var(--card-ink);color:var(--card-ink);background:var(--card-ink);color:var(--card-bg);}
+.tag.pop{animation:tp 0.4s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes tp{
+    0%{transform:scale(1) rotate(var(--r,0deg));}
+    40%{transform:scale(1.18) rotate(0deg);}
+    70%{transform:scale(0.94) rotate(0deg);}
+    100%{transform:scale(1) rotate(var(--r,0deg));}
+}
+.tag:nth-child(3n){--r:-1.2deg;}
+.tag:nth-child(4n){--r:1.5deg;}
+.tag:nth-child(5n){--r:-1.8deg;}
+
+/* Tool extend (skills bottom-left) */
+.tool-extend{margin-top:8px;display:flex;flex-direction:column;gap:4px;}
+.tool-extend .te-row{
+    display:flex;align-items:center;gap:5px;
+    font-size:10px;color:var(--card-ink-soft);line-height:1.5;
+    padding:3px 0;border-bottom:1px solid rgba(42,26,26,0.06);
+}
+.tool-extend .te-row:last-child{border-bottom:none;}
+.tool-extend .te-ico{
+    width:20px;height:20px;border-radius:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--card-ink);color:var(--card-bg);font-size:9px;flex-shrink:0;
+}
+.tool-extend .te-l{
+    font-weight:700;color:var(--card-ink);min-width:48px;flex-shrink:0;
+}
+.tool-extend .te-v{color:var(--card-ink-soft);}
+
+/* ===== CONTACT ===== */
+.ct-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+.ct-info h3{
+    font-size:13px;font-weight:700;color:var(--card-ink);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;
+}
+.ct-info .r{
+    display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;color:var(--card-ink-soft);
+}
+.ct-info .r .ib{
+    width:30px;height:30px;border-radius:0;
+    background:var(--card-bg);border:1.5px solid var(--card-ink);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--card-ink);font-size:12px;flex-shrink:0;
+    transition:all 0.3s;
+}
+.ct-info .r .val{color:var(--card-ink-soft);text-decoration:none;}
+.ct-info .r:hover .ib{background:var(--card-ink);color:var(--card-bg);}
+.ct-honor{
+    margin-top:10px;padding:12px;
+    background:rgba(168,200,216,0.1);border-radius:10px;
+    font-size:11px;color:var(--card-ink-soft);
+    position:relative;
+}
+.ct-honor strong{color:#3A4A5A;font-weight:700;font-size:12px;display:block;margin-bottom:8px;}
+.ct-honor .honor-category{
+    display:flex;margin-bottom:4px;line-height:1.6;
+}
+.ct-honor .hc-title{
+    font-weight:700;color:#7BA7C4;min-width:60px;text-align:right;padding-right:6px;flex-shrink:0;
+}
+.ct-honor .hc-content{
+    color:#5A6A7A;flex:1;
+}
+
+.note-f{
+    background:var(--card-bg);padding:12px 12px 14px;
+    border:1.5px solid rgba(0,0,0,0.10);
+}
+.note-f h3{font-size:13px;font-weight:700;color:var(--card-ink);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
+.note-f input,.note-f textarea{
+    width:100%;padding:6px 8px;border-radius:0;
+    border:1.5px solid rgba(0,0,0,0.10);
+    background:rgba(0,0,0,0.02);font-family:inherit;font-size:11px;color:var(--card-ink);
+    outline:none;transition:all 0.2s;margin-bottom:5px;
+}
+.note-f input:focus,.note-f textarea:focus{border-color:var(--accent-pink);}
+.note-f textarea{resize:vertical;min-height:56px;}
+.note-f button{
+    padding:6px 14px;border-radius:0;
+    border:1.5px solid rgba(0,0,0,0.15);
+    background:var(--card-ink);color:#fff;font-weight:700;font-size:11px;
+    cursor:pointer;transition:all 0.25s;font-family:inherit;text-transform:uppercase;letter-spacing:0.5px;
+}
+.note-f button:hover{background:var(--accent-pink);border-color:var(--accent-pink);color:var(--card-ink);}
+
+/* ===== Responsive ===== */
+@media(max-width:1023px){
+    .section{padding:28px 20px;}
+    .content-card{padding:24px 20px;max-height:84vh;}
+    .skill-wrap,.ct-wrap{grid-template-columns:1fr;}
+}
+@media(max-width:767px){
+    .section{padding:16px 10px;}
+    .content-card{padding:18px 12px;max-height:86vh;}
+    .photo-box{width:150px;height:150px;}
+    .photo-box .pf{width:100px;height:100px;}
+    .photo-box .ap.p1{width:38px;height:38px;top:-3px;right:3px;}
+    .photo-box .ap.p2{width:28px;height:28px;bottom:1px;left:0;}
+    .photo-box .ap.p3{width:18px;height:18px;top:10px;left:-3px;}
+    .photo-box .ap.p4{width:42px;height:42px;bottom:-4px;right:-1px;}
+    .photo-box .ap.p5{width:14px;height:14px;right:-6px;font-size:5px;}
+    .txt-box .hello{font-size:28px;}
+    .copy-email-wrap .ce-input{width:140px;}
+    .vibe-grid{grid-template-columns:1fr;max-width:260px;gap:10px;}
+    .side-nav{width:30px;height:30px;font-size:11px;}
+    .side-nav.left{left:4px;}
+    .side-nav.right{right:4px;}
+}
+@media(max-width:400px){
+    .content-card{padding:14px 8px;}
+    .photo-box{width:130px;height:130px;}
+    .photo-box .pf{width:88px;height:88px;}
+    .txt-box .hello{font-size:24px;}
+    .copy-email-wrap{flex-direction:column;gap:4px;}
+    .copy-email-wrap .ce-input{width:100%;}
+    .copy-email-wrap .ce-btn{border-left:1.5px solid var(--card-ink);width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- Retro Cut-out Decor -->
+<div class="retro-deco rd-1">✦</div>
+<div class="retro-deco rd-2">✧</div>
+<div class="retro-deco rd-3">◈</div>
+<div class="retro-deco rd-4">▽</div>
+<div class="retro-deco rd-5">— 2026 —</div>
+
+<div class="retro-star rs-1">✧</div>
+<div class="retro-star rs-2">✦</div>
+<div class="retro-star rs-3">✧</div>
+<div class="retro-star rs-4">✦</div>
+
+<div class="retro-arrow ra-1">→</div>
+<div class="retro-arrow ra-2">←</div>
+<div class="retro-arrow ra-3">↗</div>
+<div class="retro-arrow ra-4">→</div>
+<div class="retro-arrow ra-5">↑</div>
+
+<div class="cut-line cl-1"></div>
+<div class="cut-line cl-2"></div>
+<div class="cut-line cl-3"></div>
+
+<div class="pen-nib-deco">✒</div>
+<div class="gd-tag">Graphic Designer</div>
+
+<!-- Nav Bar -->
+<div class="nav-bar" id="navBar">
+    <button class="nv active" data-idx="0" data-i18n="nav_home">首页</button>
+    <button class="nv" data-idx="1" data-i18n="nav_exp">项目经验</button>
+    <button class="nv" data-idx="2" data-i18n="nav_skills">产品</button>
+    <button class="nv" data-idx="3" data-i18n="nav_contact">邮箱</button>
+</div>
+
+<!-- Mailbox Icon -->
+<div class="mailbox-icon" onclick="copyEmailQuick()" title="点击复制邮箱">
+    <div class="mailbox">
+        <div class="mailbox-flag"></div>
+        <div class="mailbox-body"></div>
+        <div class="mailbox-door"></div>
+        <div class="mail-letter"></div>
+        <div class="mailbox-post"></div>
+    </div>
+    <div class="mailbox-tip" data-i18n="mailbox_tip">点击复制邮箱地址</div>
+</div>
+
+<!-- Side Nav -->
+<button class="side-nav left" id="prevSec"><i class="fas fa-chevron-left"></i></button>
+<button class="side-nav right" id="nextSec"><i class="fas fa-chevron-right"></i></button>
+
+<!-- Bottom Dots -->
+<div class="bottom-dots" id="botDots">
+    <span class="d active" data-idx="0"></span>
+    <span class="d" data-idx="1"></span>
+    <span class="d" data-idx="2"></span>
+    <span class="d" data-idx="3"></span>
+</div>
+
+<!-- ===== Sections ===== -->
+<div class="sections-wrap" id="sw">
+
+<!-- ABOUT ME -->
+<section class="section" data-idx="0">
+    <div class="content-card">
+        <div class="ab-wrap">
+            <div class="ph-wrap">
+                <div class="photo-box">
+                    <div class="pf"><img src="./个人头像.jpg" alt="李梓琪"></div>
+                    <!-- Personality Bubbles -->
+                    <div class="pb pb-1 highlight">极强产品思维</div>
+                    <div class="pb pb-2 blue">独立开发Agent</div>
+                    <div class="pb pb-3 warm">两段AI实习</div>
+                    <div class="pb pb-4">技术驱动决策</div>
+                    <div class="pb pb-5 blue">Self-Attention落地</div>
+                    <div class="pb pb-6 highlight">学术理论工程化</div>
+                    <div class="ap p1"></div>
+                    <div class="ap p2"></div>
+                    <div class="ap p3"></div>
+                    <div class="ap p4"></div>
+                    <div class="ap p5">★</div>
+                </div>
+                <div class="txt-box">
+                    <div class="hello" data-i18n="hero_hello">Hey, I'm 李梓琪</div>
+                    <div class="sub" data-i18n="hero_sub">AI Product Manager · 四川师范大学硕士（省属重点大学）</div>
+                    <div class="bio" data-i18n="hero_bio">
+                        独立开发供应链智能选品Agent / 两段AI产品实习（西瓜创客 · 圭目机器人），<br>
+                        从Self-Attention论文到标注流程优化方案，从Scratch互动设计到直觉模糊决策算法工程化——<br>
+                        我习惯用技术思维驱动产品决策，把学术理论变成可落地的解决方案。
+                    </div>
+                </div>
+            </div>
+            <div class="vibe-grid">
+                <div class="vb" onclick="goToSec(1)">
+                    <div class="vb-interact-tip" data-i18n="vb_interact_tip">💬 可交互Demo</div>
+                    <div class="vb-header">
+                        <span class="ico">🌐</span>
+                        <h4>SourceMind</h4>
+                    </div>
+                    <span class="tg" data-i18n="vb_sourcemind_tg">供应链智能选品Agent</span>
+                    <span class="tg-sub">LLM + EXP-TODIM + TOPSIS</span>
+                    <div class="vb-stats">
+                        <div class="vb-stat"><span class="vs-num">7维</span><span class="vs-label" data-i18n="vs_label_1">评估指标</span></div>
+                        <div class="vb-stat"><span class="vs-num">O(1)</span><span class="vs-label" data-i18n="vs_label_2">算法复杂度</span></div>
+                    </div>
+                    <div class="vb-desc" data-i18n="vb_sourcemind_desc">独立开发全栈项目，将学术理论工程化落地</div>
+                    <span class="vb-arrow"><i class="fas fa-arrow-right"></i></span>
+                </div>
+                <div class="vb" onclick="goToSec(1)">
+                    <div class="vb-header">
+                        <span class="ico">🍉</span>
+                        <h4>西瓜创客</h4>
+                    </div>
+                    <span class="tg" data-i18n="vb_xiguai_tg">AI产品经理 · 实习</span>
+                    <span class="tg-sub">AI课程 · 知识图谱 · 互动设计</span>
+                    <div class="vb-stats">
+                        <div class="vb-stat"><span class="vs-num">606</span><span class="vs-label" data-i18n="vs_label_3">学员覆盖</span></div>
+                        <div class="vb-stat"><span class="vs-num">80%</span><span class="vs-label" data-i18n="vs_label_4">好评率</span></div>
+                    </div>
+                    <div class="vb-desc" data-i18n="vb_xiguai_desc">设计AI领航班课程体系，荣获多鲸年度AI教育品牌</div>
+                    <span class="vb-arrow"><i class="fas fa-arrow-right"></i></span>
+                </div>
+                <div class="vb" onclick="goToSec(1)">
+                    <div class="vb-header">
+                        <span class="ico">🤖</span>
+                        <h4>圭目机器人</h4>
+                    </div>
+                    <span class="tg" data-i18n="vb_guimu_tg">AI产品助理 · 实习</span>
+                    <span class="tg-sub">Self-Attention · 标注SOP · 质量控制</span>
+                    <div class="vb-stats">
+                        <div class="vb-stat"><span class="vs-num">85%</span><span class="vs-label" data-i18n="vs_label_5">标注准确率</span></div>
+                        <div class="vb-stat"><span class="vs-num">+8%</span><span class="vs-label" data-i18n="vs_label_6">关键区域提升</span></div>
+                    </div>
+                    <div class="vb-desc" data-i18n="vb_guimu_desc">制定道面缺陷检测标注标准，山东京博项目落地</div>
+                    <span class="vb-arrow"><i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE: Problem → Method → Result -->
+<section class="section" data-idx="1">
+    <div class="content-card">
+        <div class="sec-h">
+            <span class="label" data-i18n="exp_label">✎ Experience</span>
+            <h2 data-i18n="exp_title">实习与项目经历</h2>
+            <div class="line"></div>
+        </div>
+        <div class="exp-list">
+
+            <!-- SourceMind 对话式交互 Demo -->
+            <div class="chat-demo-wrap">
+                <div class="chat-demo-header" onclick="toggleChatDemo()">
+                    <span class="cdh-icon">💬</span>
+                    <span class="cdh-title" data-i18n="chat_title">体验 SourceMind 对话式选品</span>
+                    <span class="cdh-badge" data-i18n="chat_badge">交互Demo</span>
+                    <span class="cdh-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="chat-demo-body" id="chatDemoBody">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-msg agent">
+                            <div class="cm-avatar">🤖</div>
+                            <div class="cm-body">
+                                <div class="cm-name" data-i18n="chat_agent_name">SourceMind Agent</div>
+                                <div class="cm-text" data-i18n="chat_welcome">你好！我是供应链智能选品助手。你可以告诉我需要采购什么产品，我来帮你智能筛选最优供应商组合。试试下面的预设场景 👇</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input" id="chatOptions"></div>
+                    <div class="chat-reset" id="chatReset" style="display:none;">
+                        <button onclick="resetChatDemo()"><i class="fas fa-redo"></i> <span data-i18n="chat_reset">重新演示</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SourceMind 项目介绍 -->
+            <div class="exp-card">
+                <div class="ec-h" onclick="toggleEC(this)">
+                    <h3 data-i18n="exp_sourcemind">SourceMind — 供应链智能选品Agent</h3>
+                    <span class="dt">2025 - 至今</span>
+                </div>
+                <div class="ec-role" data-i18n="exp_role_sourcemind">独立项目 · 产品&amp;工程全栈</div>
+                <div class="pmr">
+                    <div class="block q">
+                        <div class="bl-h"><span class="icon">❓</span> <span data-i18n="exp_label_problem">问题</span> <span class="tag" data-i18n="exp_label_pain">痛点</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">⚠</span><span class="at">1688平台上小微创业者（DIY手工、淘宝店新手等）采购原材料时，需要跨多个品类（珠子、线材、扣件等）分别找供应商、比价、评估物流成本，流程繁琐且缺乏科学的决策依据</span></div>
+                            <div class="arrow-item"><span class="arr">⚠</span><span class="at">1688官方采购助手仅支持单商品比价，无法处理<strong>"配齐整个产品"</strong>的场景</span></div>
+                        </div>
+                    </div>
+                    <div class="block m">
+                        <div class="bl-h"><span class="icon">🛠</span> <span data-i18n="exp_label_method">方法</span> <span class="tag" data-i18n="exp_label_solution">方案</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>三层解耦架构</strong>：LLM+规则双模式降级引擎将用户自然语言拆解为结构化配件清单；混合数据采集层以"用户提供链接+自动抓取+单行快速录入"三重兜底解决1688反爬问题</span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>决策层工程化</strong>：将直觉模糊数(IFN) + EXP-TODIM + 行为TOPSIS从论文公式工程化为可运行的评估管线，覆盖<strong>7维评估指标</strong>（价格、风险、交付、服务、起批量、稳定性、物流距离）</span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>物流距离量化</strong>：基于31省邻接关系表和5级评分体系，将收货地→发货地距离量化纳入决策矩阵</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-expand">
+                    <div class="block r" style="margin-top:4px;">
+                        <div class="bl-h"><span class="icon">✅</span> <span data-i18n="exp_label_result">结果</span> <span class="tag" data-i18n="exp_label_effect">成效</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">7维评估维度全部以用户可自行获取的数据为来源，<strong>不依赖任何平台API或爬虫黑科技</strong></span></div>
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">物流评分O(1)查表时间复杂度，<strong>单行录入格式</strong>将手动数据录入从<strong>5轮对话压缩为1行输入</strong></span></div>
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">交互流程重构将用户轮次从<strong>N轮降至1轮</strong>一次性采集</span></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="ec-btn" onclick="toggleEC(this.closest('.exp-card').querySelector('.ec-h'))"><span data-i18n="exp_btn_expand">展开结果</span> <i class="fas fa-chevron-down"></i></button>
+            </div>
+
+            <!-- 西瓜创客（AI领航班） -->
+            <div class="exp-card">
+                <div class="ec-h" onclick="toggleEC(this)">
+                    <h3>成都娄外科技有限公司（西瓜创客）— AI领航班</h3>
+                    <span class="dt">2024 - 2025</span>
+                </div>
+                <div class="ec-role">AI产品经理 · 实习</div>
+                <div class="pmr">
+                    <div class="block q">
+                        <div class="bl-h"><span class="icon">❓</span> <span data-i18n="exp_label_problem">问题</span> <span class="tag" data-i18n="exp_label_pain">痛点</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">⚠</span><span class="at">课程内容既要讲清楚AI原理（抽象、技术性强），又要让中小学生愿意学、能动手实践，<strong>传统PPT授课完不成这个任务</strong></span></div>
+                            <div class="arrow-item"><span class="arr">⚠</span><span class="at">课程运营中产生大量重复性工作（学员作品整理、互动内容制作），纯人工操作效率低，<strong>跟不上规模化营期节奏</strong>（单期269人）</span></div>
+                        </div>
+                    </div>
+                    <div class="block m">
+                        <div class="bl-h"><span class="icon">🛠</span> <span data-i18n="exp_label_method">方法</span> <span class="tag" data-i18n="exp_label_solution">方案</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>课程体系设计</strong>：独立搭建AI领航班约20%核心知识图谱（AI原理进阶/多模态实战/跨学科项目），并设计<strong>13个"课后玩一玩"互动环节</strong></span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>AIGC内容生产</strong>：50%以上互动环节自主创作剧情与场景——基于Scratch自建交互场景，通过AIGC工具批量生成网页创作、AI歌曲、AI视频等<strong>25个内容原型</strong></span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>学员成果自动化</strong>：独立提出"AI智能抓取"方案——利用前端页面结构和自动化脚本，实现学员提交作品的自动识别、抓取与分类归档</span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>规模化验证</strong>：方案覆盖三期营员共<strong>606人</strong>（一期269人/二期157人/三期180人）</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-expand">
+                    <div class="block r" style="margin-top:4px;">
+                        <div class="bl-h"><span class="icon">✅</span> <span data-i18n="exp_label_result">结果</span> <span class="tag" data-i18n="exp_label_effect">成效</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">参与的AI领航班课程助力西瓜创客荣获<strong>多鲸"2025年度AI教育口碑品牌"</strong></span></div>
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">13个互动环节覆盖606名学员，<strong>80%好评率</strong>，有效提升完课率与粘性</span></div>
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">完成<strong>25个AIGC内容原型</strong>（网页/音乐/视频多模态），课程素材制作周期从逐个手工缩短为AI辅助快速迭代</span></div>
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">AI智能抓取方案将学员作品整理从<strong>2天→1个上午，效率提升约90%</strong>，被采纳为标准化运营流程</span></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="ec-btn" onclick="toggleEC(this.closest('.exp-card').querySelector('.ec-h'))"><span data-i18n="exp_btn_expand">展开结果</span> <i class="fas fa-chevron-down"></i></button>
+            </div>
+
+            <!-- 圭目机器人（道面缺陷检测） -->
+            <div class="exp-card">
+                <div class="ec-h" onclick="toggleEC(this)">
+                    <h3>成都圭目机器人有限公司 — 道面缺陷检测</h3>
+                    <span class="dt">2023 - 2024</span>
+                </div>
+                <div class="ec-role">AI产品助理 · 实习</div>
+                <div class="pmr">
+                    <div class="block q">
+                        <div class="bl-h"><span class="icon">❓</span> <span data-i18n="exp_label_problem">问题</span> <span class="tag" data-i18n="exp_label_pain">痛点</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">⚠</span><span class="at">道面缺陷检测（裂缝、修补处等）依赖高质量图像标注数据，但<strong>标注质量不稳定</strong>，多人协作时偏差大</span></div>
+                            <div class="arrow-item"><span class="arr">⚠</span><span class="at">标注资源存在<strong>结构性浪费</strong>——传统标注将整张图像等权处理，但实际业务中只有裂缝、修补处等关键区域决定模型性能</span></div>
+                        </div>
+                    </div>
+                    <div class="block m">
+                        <div class="bl-h"><span class="icon">🛠</span> <span data-i18n="exp_label_method">方法</span> <span class="tag" data-i18n="exp_label_solution">方案</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>标准化流程搭建</strong>：独立制定道面检测数据标注标准SOP，明确缺陷边界定义、标注粒度、争议处理规则；建立常态化质量复核机制——<strong>每周抽检200+张图像</strong>，累计分析<strong>120+例错误case</strong></span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>数据反馈闭环</strong>：通过错误模式分类驱动SOP迭代，将标注准确率稳定在<strong>85%以上</strong></span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>注意力权重分配方案</strong>：基于Self-Attention机制，提出关键区域标注中引入类注意力权重分配的产品化方案——<strong>标注资源向裂缝、修补处倾斜</strong>，非缺陷区域降低标注密度</span></div>
+                            <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>实验验证</strong>：与算法团队在TensorFlow框架下设计<strong>基线CNN与注意力机制CNN的对比实验</strong>，验证方案有效性</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-expand">
+                    <div class="block r" style="margin-top:4px;">
+                        <div class="bl-h"><span class="icon">✅</span> <span data-i18n="exp_label_result">结果</span> <span class="tag" data-i18n="exp_label_effect">成效</span></div>
+                        <div class="bl-body">
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">数据反馈闭环将标注准确率从<strong>70%+稳定在85%以上</strong>，持续压缩标注偏差</span></div>
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">注意力权重方案使<strong>关键区域标注准确率提升约8%</strong></span></div>
+                            <div class="arrow-item"><span class="arr">▸</span><span class="at">方案在<strong>山东京博项目</strong>落地，帮助检测团队更精准地识别道面病害</span></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="ec-btn" onclick="toggleEC(this.closest('.exp-card').querySelector('.ec-h'))"><span data-i18n="exp_btn_expand">展开结果</span> <i class="fas fa-chevron-down"></i></button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SOFT SKILLS (软实力展示) -->
+<section class="section" data-idx="2">
+    <div class="content-card">
+        <div class="sec-h">
+            <span class="label" data-i18n="skills_label">✎ Soft Skills</span>
+            <h2 data-i18n="skills_title">软实力矩阵</h2>
+            <div class="line"></div>
+        </div>
+        <div class="skill-wrap">
+            <div class="skill-col">
+                <h3><span class="dot dr"></span> <span data-i18n="skills_col1_title">学习与成长</span></h3>
+                <div class="soft-item">
+                    <div class="soft-icon">📚</div>
+                    <div class="soft-content">
+                        <div class="soft-title" data-i18n="skills_item1_title">快速学习能力</div>
+                        <div class="soft-desc" data-i18n="skills_item1_desc">两周掌握AI标注全流程，独立设计标注SOP并落地山东京博项目</div>
+                    </div>
+                </div>
+                <div class="soft-item">
+                    <div class="soft-icon">🔬</div>
+                    <div class="soft-content">
+                        <div class="soft-title" data-i18n="skills_item2_title">学术工程化思维</div>
+                        <div class="soft-desc" data-i18n="skills_item2_desc">将Self-Attention论文转化为可执行的标注方案，提升关键区域识别率8%</div>
+                    </div>
+                </div>
+                <div class="soft-item">
+                    <div class="soft-icon">🎯</div>
+                    <div class="soft-content">
+                        <div class="soft-title" data-i18n="skills_item3_title">目标导向</div>
+                        <div class="soft-desc" data-i18n="skills_item3_desc">以终为始，将复杂问题拆解为可执行的里程碑，确保交付质量</div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-col">
+                <h3><span class="dot dg"></span> <span data-i18n="skills_col2_title">协作与沟通</span></h3>
+                <div class="soft-item">
+                    <div class="soft-icon">🤝</div>
+                    <div class="soft-content">
+                        <div class="soft-title" data-i18n="skills_item4_title">跨团队协作</div>
+                        <div class="soft-desc" data-i18n="skills_item4_desc">与算法团队协作设计对比实验，推动注意力机制方案落地验证</div>
+                    </div>
+                </div>
+                <div class="soft-item">
+                    <div class="soft-icon">💬</div>
+                    <div class="soft-content">
+                        <div class="soft-title" data-i18n="skills_item5_title">技术翻译能力</div>
+                        <div class="soft-desc" data-i18n="skills_item5_desc">将专业算法术语转化为中小学生易懂的课程内容，606名学员好评率80%</div>
+                    </div>
+                </div>
+                <div class="soft-item">
+                    <div class="soft-icon">⚡</div>
+                    <div class="soft-content">
+                        <div class="soft-title" data-i18n="skills_item6_title">执行力</div>
+                        <div class="soft-desc" data-i18n="skills_item6_desc">从0到1独立完成供应链选品Agent全栈开发，实现学术理论工程化</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="soft-summary">
+            <div class="soft-stat">
+                <span class="stat-num">34项</span>
+                <span class="stat-label" data-i18n="skills_stat1">学科竞赛获奖</span>
+            </div>
+            <div class="soft-stat">
+                <span class="stat-num">420+</span>
+                <span class="stat-label" data-i18n="skills_stat2">志愿时长(小时)</span>
+            </div>
+            <div class="soft-stat">
+                <span class="stat-num">11次</span>
+                <span class="stat-label" data-i18n="skills_stat3">奖学金荣誉</span>
+            </div>
+            <div class="soft-stat">
+                <span class="stat-num">2项</span>
+                <span class="stat-label" data-i18n="skills_stat4">大创项目主导</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" data-idx="3">
+    <div class="content-card">
+        <div class="sec-h">
+            <span class="label" data-i18n="contact_label">✎ Contact</span>
+            <h2 data-i18n="contact_title">联系我</h2>
+            <div class="line"></div>
+        </div>
+        <div class="ct-wrap">
+            <div class="ct-info">
+                <h3 data-i18n="contact_findme">📮 找到我</h3>
+                <div class="r">
+                    <span class="ib"><i class="fas fa-envelope"></i></span>
+                    <span class="val">2558383953@qq.com</span>
+                </div>
+                <div class="r">
+                    <span class="ib"><i class="fas fa-phone-alt"></i></span>
+                    <span class="val">19934600948</span>
+                </div>
+            </div>
+            <form class="note-f" onsubmit="return handleFormSubmit(event);">
+                <h3 data-i18n="form_title">💬 给我留言</h3>
+                <input type="text" name="name" data-i18n="form_name" placeholder="你的名字" required>
+                <input type="email" name="_replyto" data-i18n="form_email" placeholder="你的邮箱" required>
+                <textarea name="message" data-i18n="form_msg" placeholder="有什么想说的..." required></textarea>
+                <button type="submit" data-i18n="form_send"><i class="fas fa-paper-plane"></i> 发送</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+</div>
+
+<script>
+// Scroll Navigation
+const totalSec=4;let currentSec=0,isScrolling=false;
+const sw=document.getElementById('sw');
+const dots=document.querySelectorAll('.d');
+
+function goToSec(idx){
+    if(isScrolling||idx<0||idx>=totalSec||idx===currentSec)return;
+    isScrolling=true;
+    currentSec=idx;
+    sw.style.transform='translateY('+(-idx*100)+'vh)';
+    dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+    updateNav();
+    setTimeout(()=>{isScrolling=false},700);
+}
+function updateNav(){
+    document.getElementById('prevSec').style.opacity=currentSec===0?'0.15':'0.5';
+    document.getElementById('nextSec').style.opacity=currentSec===3?'0.15':'0.5';
+    document.querySelectorAll('.nv').forEach(n=>n.classList.toggle('active',parseInt(n.dataset.idx)===currentSec));
+}
+
+// Nav bar clicks
+document.querySelectorAll('.nv').forEach(n=>n.addEventListener('click',()=>goToSec(parseInt(n.dataset.idx))));
+
+// Wheel
+let wt=null;
+document.addEventListener('wheel',e=>{
+    const card=e.target.closest('.content-card');
+    if(card){
+        const s=card.scrollHeight>card.clientHeight;
+        if(s){
+            const atT=card.scrollTop===0,atB=Math.abs(card.scrollTop+card.clientHeight-card.scrollHeight)<2;
+            if((e.deltaY>0&&!atB)||(e.deltaY<0&&!atT))return;
+        }
+    }
+    e.preventDefault();
+    if(wt){clearTimeout(wt);wt=null;return;}
+    wt=setTimeout(()=>{if(e.deltaY>0)goToSec(currentSec+1);else goToSec(currentSec-1);wt=null},20);
+},{passive:false});
+
+document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();goToSec(currentSec+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();goToSec(currentSec-1);}
+});
+
+let tY=0;
+document.addEventListener('touchstart',e=>{tY=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+    const dy=e.changedTouches[0].screenY-tY;
+    if(Math.abs(dy)>50){if(dy<0)goToSec(currentSec+1);else goToSec(currentSec-1);}
+},{passive:true});
+
+document.getElementById('prevSec').addEventListener('click',()=>goToSec(currentSec-1));
+document.getElementById('nextSec').addEventListener('click',()=>goToSec(currentSec+1));
+dots.forEach(d=>d.addEventListener('click',()=>goToSec(parseInt(d.dataset.idx))));
+
+// Toggle Experience expand
+function toggleEC(el){
+    const card=el.closest('.exp-card');if(!card)return;
+    const exp=card.querySelector('.ec-expand');
+    const btn=card.querySelector('.ec-btn');if(!exp)return;
+    const op=!exp.classList.contains('open');
+    exp.classList.toggle('open');
+    if(btn){
+        btn.classList.toggle('open');
+        btn.innerHTML=op?'收起结果 <i class="fas fa-chevron-up"></i>':'展开结果 <i class="fas fa-chevron-down"></i>';
+    }
+}
+
+// Tag pop
+const tclrs=['#FD85AB','#92C6D9','#f0e4d0','#e8d4c0','#d0e0e4'];
+
+// Copy Email
+function copyEmail(btn){
+    const input=btn.previousElementSibling;
+    input.select();document.execCommand('copy');
+    btn.innerHTML='<i class="fas fa-check"></i> 已复制';btn.classList.add('copied');
+    setTimeout(()=>{btn.innerHTML='<i class="fas fa-copy"></i> 复制';btn.classList.remove('copied');},2000);
+}
+
+function copyEmailQuick(){
+    const email='2558383953@qq.com';
+    navigator.clipboard.writeText(email).then(()=>{
+        showCopyToast();
+    }).catch(()=>{
+        const temp=document.createElement('input');
+        temp.value=email;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showCopyToast();
+    });
+}
+
+function showCopyToast(){
+    const toast=document.createElement('div');
+    toast.style.cssText=`
+        position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+        padding:12px 24px;background:#3A4A5A;color:#fff;border-radius:8px;
+        font-size:14px;font-weight:600;z-index:1000;
+        box-shadow:0 4px 16px rgba(0,0,0,0.3);
+        animation:toastFade 1.5s ease forwards;
+    `;
+    toast.textContent='邮箱已复制到剪贴板';
+    document.body.appendChild(toast);
+    setTimeout(()=>{document.body.removeChild(toast);},1500);
+}
+
+function popTag(el){
+    el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');
+    const c=tclrs[Math.floor(Math.random()*tclrs.length)];
+    el.style.background=c;el.style.color='#fff';el.style.borderColor=c;
+    setTimeout(()=>{el.style.background='';el.style.color='';el.style.borderColor='';},500);
+}
+
+// ===== Chat Demo =====
+var chatStep=0;
+var chatMsgs=document.getElementById('chatMessages');
+var chatOpts=document.getElementById('chatOptions');
+var chatReset=document.getElementById('chatReset');
+var chatBody=document.getElementById('chatDemoBody');
+
+function toggleChatDemo(){
+    var h=document.querySelector('.chat-demo-header');
+    chatBody.classList.toggle('open');
+    h.classList.toggle('open');
+    if(chatBody.classList.contains('open')&&chatStep===0){
+        showChatOptions();
+    }
+}
+
+function addChatMsg(role,html){
+    var div=document.createElement('div');
+    div.className='chat-msg '+role;
+    if(role==='agent'){
+        div.innerHTML='<div class="cm-avatar">🤖</div><div class="cm-body"><div class="cm-name">SourceMind Agent</div><div class="cm-text">'+html+'</div></div>';
+    }else{
+        div.innerHTML='<div class="cm-avatar">👤</div><div class="cm-body"><div class="cm-name">你</div><div class="cm-text">'+html+'</div></div>';
+    }
+    chatMsgs.appendChild(div);
+    chatMsgs.scrollTop=chatMsgs.scrollHeight;
+}
+
+function showChatOptions(){
+    chatOpts.innerHTML='';
+    if(chatStep===0){
+        chatOpts.innerHTML='<button class="ci-btn primary" onclick="chatDemoStep1()">💎 试试：配齐50套DIY手链材料</button>';
+    }
+    chatReset.style.display='none';
+    chatMsgs.scrollTop=chatMsgs.scrollHeight;
+}
+
+function showLoading(callback){
+    var div=document.createElement('div');
+    div.className='chat-msg agent';
+    div.id='chatLoading';
+    div.innerHTML='<div class="cm-avatar">🤖</div><div class="cm-body"><div class="cm-name">SourceMind Agent</div><div class="cm-loading"><span></span><span></span><span></span></div></div>';
+    chatMsgs.appendChild(div);
+    chatMsgs.scrollTop=chatMsgs.scrollHeight;
+    setTimeout(function(){
+        var ld=document.getElementById('chatLoading');
+        if(ld)ld.remove();
+        if(callback)callback();
+    },1200);
+}
+
+function chatDemoStep1(){
+    chatStep=1;
+    addChatMsg('user','💎 试试：配齐50套DIY手链材料');
+    showLoading(function(){
+        addChatMsg('agent','好的！我来帮你拆解需求，请确认以下配件清单是否准确：<ul class="cm-checklist"><li><strong>珠子（8mm混色）</strong> — 约50份</li><li><strong>弹力线（0.8mm）</strong> — 约50份</li><li><strong>扣件套装（含龙虾扣+延长链）</strong> — 约50套</li><li><strong>包装盒（小号）</strong> — 约50个</li></ul>你可以点击下方按钮快速确认，或在输入框中输入你的修改需求 ✍️');
+        chatOpts.innerHTML='<button class="ci-btn primary" onclick="chatDemoStep2a()">✅ 确认无误，开始搜索</button><div class="ci-input-wrap"><input class="ci-input" id="ciInput" placeholder="例如：珠子换成蓝色..." onkeydown="if(event.key===\'Enter\')chatDemoSendInput()"><button class="ci-send" onclick="chatDemoSendInput()"><i class="fas fa-paper-plane"></i></button></div>';
+    });
+}
+
+function chatDemoSendInput(){
+    var input=document.getElementById('ciInput');
+    var val=input.value.trim();
+    if(!val)return;
+    input.value='';
+    var kw=val.toLowerCase();
+    var confirmKw=['确认','无误','没错','可以','好','confirm','yes','correct','ok','sure','right','go ahead'];
+    var isConfirm=false;
+    for(var i=0;i<confirmKw.length;i++){if(kw.indexOf(confirmKw[i])>=0){isConfirm=true;break;}}
+    if(isConfirm){
+        chatDemoStep2a();
+    }else{
+        chatDemoStep2Custom(val);
+    }
+}
+
+function chatDemoStep2a(){
+    chatStep=2;
+    addChatMsg('user','确认无误，开始搜索吧');
+    showLoading(function(){
+        addChatMsg('agent','🔍 正在根据 7 维评估指标（价格、风险、交付、服务、起批量、稳定性、物流距离）智能搜索最优供应商组合...<br><br>📍 收货地：四川省成都市<br>📊 评估算法：直觉模糊数(IFN) + EXP-TODIM + 行为TOPSIS');
+        setTimeout(function(){
+            addChatMsg('agent','📊 <strong>供应商综合排名结果</strong><div class="cm-card"><div class="cm-card-item"><span class="cmi-rank">#1</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E6%99%B6%E5%BE%B7%E7%8F%A0%E5%AE%9D+DIY%E6%89%8B%E9%93%BE%E9%85%8D%E4%BB%B6" target="_blank">义乌市晶德珠宝 ↗</a><span class="cmi-score">92.4分</span><span class="cmi-tag">🏆</span></div><div class="cm-card-item"><span class="cmi-rank">#2</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E4%B9%8B%E4%B9%9D%E9%A5%B0%E5%93%81+DIY%E9%A5%B0%E5%93%81%E9%85%8D%E4%BB%B6" target="_blank">义乌市之九饰品 ↗</a><span class="cmi-score">87.1分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#3</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E9%92%B5%E8%BE%BE%E9%A5%B0%E5%93%81%E9%85%8D%E4%BB%B6+%E5%BC%B9%E5%8A%9B%E7%BA%BF" target="_blank">义乌市钜达饰品配件 ↗</a><span class="cmi-score">81.6分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#4</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E6%B0%B4%E4%BA%91%E9%98%81%E7%8F%A0%E5%AE%9D+%E7%8F%A0%E5%AD%90%E6%95%A3%E7%8F%A0" target="_blank">义乌市水云阁珠宝 ↗</a><span class="cmi-score">76.8分</span><span class="cmi-tag"></span></div></div>🎯 推荐方案：晶德珠宝 + 之九饰品 组合采购，预计总成本 <strong>¥247-312</strong>，物流时效 2-3 天。');
+            chatOpts.innerHTML='';
+            chatReset.style.display='block';
+        },1000);
+    });
+}
+
+function chatDemoStep2Custom(userText){
+    chatStep=2;
+    addChatMsg('user',userText);
+    showLoading(function(){
+        addChatMsg('agent','已更新你的修改需求 ✅<br><br>已为你重新调整配件清单，现在开始搜索最优供应商组合...');
+        setTimeout(function(){
+            addChatMsg('agent','📊 <strong>供应商综合排名结果</strong><div class="cm-card"><div class="cm-card-item"><span class="cmi-rank">#1</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E6%99%B6%E5%BE%B7%E7%8F%A0%E5%AE%9D+DIY%E6%89%8B%E9%93%BE%E9%85%8D%E4%BB%B6" target="_blank">义乌市晶德珠宝 ↗</a><span class="cmi-score">93.2分</span><span class="cmi-tag">🏆</span></div><div class="cm-card-item"><span class="cmi-rank">#2</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E4%B9%8B%E4%B9%9D%E9%A5%B0%E5%93%81+DIY%E9%A5%B0%E5%93%81%E9%85%8D%E4%BB%B6" target="_blank">义乌市之九饰品 ↗</a><span class="cmi-score">86.8分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#3</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E9%92%B5%E8%BE%BE%E9%A5%B0%E5%93%81%E9%85%8D%E4%BB%B6+%E5%BC%B9%E5%8A%9B%E7%BA%BF" target="_blank">义乌市钜达饰品配件 ↗</a><span class="cmi-score">80.5分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#4</span><a class="cmi-name" href="https://s.1688.com/selloffer/offer_search.htm?keywords=%E4%B9%89%E4%B9%8C%E5%B8%82%E6%B0%B4%E4%BA%91%E9%98%81%E7%8F%A0%E5%AE%9D+%E7%8F%A0%E5%AD%90%E6%95%A3%E7%8F%A0" target="_blank">义乌市水云阁珠宝 ↗</a><span class="cmi-score">75.3分</span><span class="cmi-tag"></span></div></div>🎯 推荐方案：晶德珠宝 + 之九饰品 组合采购，预计总成本 <strong>¥262-330</strong>，物流时效 2-3 天。');
+            chatOpts.innerHTML='';
+            chatReset.style.display='block';
+        },1000);
+    });
+}
+
+function resetChatDemo(){
+    chatStep=0;
+    chatMsgs.innerHTML='<div class="chat-msg agent"><div class="cm-avatar">🤖</div><div class="cm-body"><div class="cm-name">SourceMind Agent</div><div class="cm-text">你好！我是供应链智能选品助手。你可以告诉我需要采购什么产品，我来帮你智能筛选最优供应商组合。试试下面的预设场景 👇</div></div></div>';
+    chatReset.style.display='none';
+    showChatOptions();
+}
+
+function handleFormSubmit(e){
+    e.preventDefault();
+    var form=e.target;
+    var name=form.querySelector('[name="name"]').value;
+    var email=form.querySelector('[name="_replyto"]').value;
+    var msg=form.querySelector('[name="message"]').value;
+    var subject=encodeURIComponent('来自网站留言 - '+name);
+    var body=encodeURIComponent('姓名：'+name+'\n邮箱：'+email+'\n\n留言内容：\n'+msg);
+    window.open('mailto:2558383953@qq.com?subject='+subject+'&body='+body);
+    alert('✨ 已打开邮件客户端，点击发送即可～');
+    form.reset();
+    return false;
+}
+
+updateNav();
+</script>
+</body>
+</html>

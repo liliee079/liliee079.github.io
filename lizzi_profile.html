@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李梓琪_作品集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --text: #1a1a1a;
+            --text-light: #666666;
+            --text-lighter: #999999;
+            --accent: #ff6b6b;
+            --border: #e0e0e0;
+            --card-bg: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .logo {
+            position: fixed;
+            top: 24px;
+            left: 32px;
+            z-index: 1000;
+            font-family: 'Caveat', cursive;
+            font-size: 26px;
+            font-weight: 600;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .nav {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            z-index: 1000;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-item {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-lighter);
+            text-decoration: none;
+            position: relative;
+            padding: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--text);
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        .nav-item.active {
+            color: var(--text);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -12px;
+            right: -12px;
+            bottom: -8px;
+            border: 2px solid var(--text);
+            border-radius: 8px;
+            opacity: 0.3;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 100px 80px 80px;
+            position: relative;
+        }
+
+        #page1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        /* ===== Decorative Lines System (Letter-to-Line) ===== */
+        .lines-container {
+            position: absolute;
+            top: 13%;
+            left: 53%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 16px;
+            z-index: 1;
+            padding: 0 40px 0 80px;
+            pointer-events: none;
+            height: 54vh;
+        }
+
+        .lines-container .gap-space {
+            width: 24px;
+            flex-shrink: 0;
+        }
+
+        .line-w {
+            position: relative;
+            pointer-events: auto;
+            cursor: pointer;
+            flex-shrink: 0;
+            width: 10px;
+        }
+
+        .line-w .line-svg {
+            width: 10px;
+            display: block;
+            overflow: visible;
+        }
+
+        .line-w .line-path {
+            stroke-linecap: round;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .line-w .line-char {
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            user-select: none;
+            color: rgba(0,0,0,0.70);
+            letter-spacing: 0;
+            white-space: nowrap;
+        }
+
+        .line-w .line-ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+
+        .line-w .line-ripple.active {
+            animation: ripple-burst 0.2s ease-out forwards;
+        }
+
+        @keyframes ripple-burst {
+            0% { width: 0; height: 0; opacity: 0.6; }
+            100% { width: 24px; height: 24px; opacity: 0; }
+        }
+
+        .line-w .line-hit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 100%;
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+        .line-w.vibrate .line-svg {
+            animation: line-vibrate 0.2s ease-out;
+        }
+
+        @keyframes line-vibrate {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(2px); }
+            40% { transform: translateX(-1.5px); }
+            60% { transform: translateX(1px); }
+            80% { transform: translateX(-0.5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ===== Subtitle (no border) ===== */
+        .subtitle-wrapper {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .subtitle-en {
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: rgba(0,0,0,0.18);
+            letter-spacing: 2px;
+            user-select: none;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .page1-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 56px;
+            font-weight: 600;
+            color: rgba(0,0,0,0.35);
+            letter-spacing: 6px;
+            user-select: none;
+            line-height: 1;
+        }
+
+        /* ===== Greeting text (left side, looping slide-in) ===== */
+        .greeting-text {
+            position: absolute;
+            left: 72px;
+            top: 42%;
+            z-index: 3;
+            user-select: none;
+            pointer-events: none;
+            animation: greeting-looped 6s ease-in-out infinite;
+        }
+
+        @keyframes greeting-looped {
+            0% { opacity: 0; transform: translateY(-50%) translateX(-30px); }
+            8% { opacity: 1; transform: translateY(-50%) translateX(0); }
+            70% { opacity: 1; transform: translateY(-50%) translateX(0); }
+            78% { opacity: 0; transform: translateY(-50%) translateX(-30px); }
+            100% { opacity: 0; transform: translateY(-50%) translateX(-30px); }
+        }
+
+        .greeting-text .greeting-line1 {
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: rgba(0,0,0,0.12);
+            letter-spacing: 5px;
+            line-height: 1.2;
+        }
+
+        .greeting-text .greeting-line2 {
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: rgba(0,0,0,0.18);
+            letter-spacing: 1px;
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+
+        .greeting-text .greeting-line3 {
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(0,0,0,0.16);
+            letter-spacing: 2px;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        /* ===== Mailbox (right side, auto tilt every 3s, click to copy) ===== */
+        .mailbox-icon {
+            position: absolute;
+            right: 32px;
+            bottom: calc(10% + 85px);
+            top: auto;
+            z-index: 20;
+            width: 70px;
+            height: 160px;
+            cursor: pointer;
+        }
+
+        .mailbox-icon .mb-body {
+            width: 54px;
+            height: 40px;
+            background: #E85D4C;
+            border-radius: 6px 6px 0 0;
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 3px 10px rgba(232,93,76,0.25);
+        }
+
+        .mailbox-icon .mb-body::before {
+            content: '';
+            position: absolute;
+            top: -7px;
+            right: -12px;
+            width: 10px;
+            height: 26px;
+            background: #E85D4C;
+            border-radius: 2px;
+        }
+
+        .mailbox-icon .mb-door {
+            width: 40px;
+            height: 22px;
+            background: #D44F40;
+            border-radius: 0 0 4px 4px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .mailbox-icon .mb-door::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 4px;
+            width: 6px;
+            height: 6px;
+            background: #8B4513;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .mailbox-icon .mb-post {
+            width: 16px;
+            height: 85px;
+            background: #A0522D;
+            position: absolute;
+            bottom: -85px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .mailbox-icon .mb-post::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: -12px;
+            width: 40px;
+            height: 12px;
+            background: #8B4513;
+            border-radius: 50%;
+        }
+
+        .mailbox-icon .mb-inner {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 22px;
+            background: #FFE4C4;
+            border-radius: 2px;
+            z-index: 5;
+            opacity: 0;
+        }
+
+        .mailbox-icon .mb-inner::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            border-left: 2px solid #DEB887;
+            border-bottom: 2px solid #DEB887;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .mailbox-icon .mb-env-fly {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            width: 24px;
+            height: 16px;
+            background: rgba(255,228,196,0.6);
+            border-radius: 2px;
+            pointer-events: none;
+            z-index: 4;
+            opacity: 0;
+        }
+
+        .mailbox-icon .mb-env-fly::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            border-left: 1.5px solid rgba(222,184,135,0.6);
+            border-bottom: 1.5px solid rgba(222,184,135,0.6);
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .mailbox-icon .mb-tip {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: var(--text-lighter);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .mailbox-icon:hover .mb-tip {
+            opacity: 0.8;
+        }
+
+        .mailbox-copy-toast {
+            position: absolute;
+            bottom: -88px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 25;
+        }
+
+        .mailbox-copy-toast.show {
+            opacity: 1;
+            animation: toast-pop-up 1.6s ease-in-out forwards;
+        }
+
+        @keyframes toast-pop-up {
+            0% { opacity: 0; transform: translateX(-50%) translateY(6px) scale(0.9); }
+            15% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+            75% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-4px) scale(0.95); }
+        }
+
+        @keyframes mail-auto-tilt {
+            0%, 100% { transform: rotate(0deg); }
+            44% { transform: rotate(0deg); }
+            52% { transform: rotate(3deg); }
+            60% { transform: rotate(0deg); }
+        }
+
+        @keyframes env-auto-fly {
+            0% { transform: translateX(-30px); opacity: 0; }
+            46% { transform: translateX(-30px); opacity: 0; }
+            52% { transform: translateX(-20px); opacity: 0.7; }
+            58% { transform: translateX(-5px); opacity: 0.4; }
+            62% { transform: translateX(0); opacity: 0; }
+            100% { transform: translateX(0); opacity: 0; }
+        }
+
+        @keyframes mail-click-jump {
+            0% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+            60% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes env-click-fly {
+            0% { transform: translateX(-30px) scale(0.3); opacity: 0; }
+            20% { transform: translateX(-20px) scale(0.6); opacity: 0.8; }
+            50% { transform: translateX(-5px) scale(1.1); opacity: 0.6; }
+            80% { transform: translateX(5px) scale(1.5); opacity: 0.2; }
+            100% { transform: translateX(10px) scale(1.8); opacity: 0; }
+        }
+
+        #page2 {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .id-card-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .id-card-strap {
+            width: 20px;
+            height: 60px;
+            background: #333;
+            margin-bottom: -5px;
+            position: relative;
+        }
+
+        .id-card-strap::after {
+            content: 'LIZII';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            font-size: 8px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .id-card {
+            width: 320px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .id-card.shake {
+            animation: card-shake 0.5s ease-in-out;
+        }
+
+        @keyframes card-shake {
+            0% { transform: translateX(0) rotate(0deg); }
+            10% { transform: translateX(-3px) rotate(-1.5deg); }
+            20% { transform: translateX(3px) rotate(1.5deg); }
+            30% { transform: translateX(-3px) rotate(-1deg); }
+            40% { transform: translateX(3px) rotate(1deg); }
+            50% { transform: translateX(-2px) rotate(-0.5deg); }
+            60% { transform: translateX(2px) rotate(0.5deg); }
+            70% { transform: translateX(-1px) rotate(-0.3deg); }
+            80% { transform: translateX(1px) rotate(0.3deg); }
+            90% { transform: translateX(0) rotate(0deg); }
+            100% { transform: translateX(0) rotate(0deg); }
+        }
+
+        .id-card-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .id-card-name {
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 12px;
+            font-family: 'Caveat', cursive;
+        }
+
+        .id-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .id-card-tag {
+            padding: 4px 12px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .id-card-subtag {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-lighter);
+            letter-spacing: 2px;
+        }
+
+        .about-content {
+            padding: 24px;
+            border: 1.5px solid transparent;
+            border-radius: 12px;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .about-content:hover {
+            border-color: rgba(0,0,0,0.10);
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+        }
+
+        .about-label {
+            font-size: 12px;
+            color: var(--text-lighter);
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .about-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 24px;
+        }
+
+        .about-title .highlight {
+            color: var(--text-lighter);
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .about-text.light {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .about-values {
+            margin-top: 28px;
+            font-size: 16px;
+            line-height: 2;
+            font-weight: 700;
+            color: rgba(0,0,0,0.55);
+        }
+
+        .about-girl {
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        #page3 {
+            background: var(--text);
+            color: white;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .projects-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carousel-nav-arrows {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-arrow {
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            background: transparent;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            padding: 20px 0;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .project-card {
+            min-width: 360px;
+            scroll-snap-align: start;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .project-card:hover {
+            animation: card-swing 0.4s ease-in-out;
+        }
+
+        @keyframes card-swing {
+            0% { transform: translateX(0) rotate(0deg); }
+            20% { transform: translateX(-6px) rotate(-2.5deg); }
+            40% { transform: translateX(6px) rotate(2.5deg); }
+            60% { transform: translateX(-4px) rotate(-1.5deg); }
+            80% { transform: translateX(4px) rotate(1.5deg); }
+            100% { transform: translateX(0) rotate(0deg); }
+        }
+
+        .project-card-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 24px;
+        }
+
+        .project-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .project-card-tags {
+            display: flex;
+            gap: 8px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .project-card-desc {
+            margin-top: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.3px;
+        }
+
+        #page5 {
+            background: #ffffff;
+            padding: 100px 120px 80px;
+        }
+
+        /* ===== Chat Demo ===== */
+        .chat-demo-wrap {
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .chat-demo-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 20px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.02);
+            transition: background 0.25s;
+            user-select: none;
+        }
+        .chat-demo-header:hover { background: rgba(0,0,0,0.04); }
+        .chat-demo-header .cdh-icon { font-size: 18px; }
+        .chat-demo-header .cdh-title { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
+        .chat-demo-header .cdh-badge {
+            font-size: 10px; padding: 3px 10px;
+            background: var(--accent); color: white; font-weight: 600; border-radius: 4px;
+        }
+        .chat-demo-header .cdh-arrow { font-size: 12px; color: var(--text-lighter); transition: transform 0.3s; }
+        .chat-demo-header.open .cdh-arrow { transform: rotate(180deg); }
+        .chat-demo-body { display: none; border-top: 1px solid var(--border); }
+        .chat-demo-body.open { display: block; }
+        .chat-messages {
+            max-height: 420px; overflow-y: auto; padding: 16px;
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .chat-messages::-webkit-scrollbar { width: 4px; }
+        .chat-messages::-webkit-scrollbar-track { background: transparent; }
+        .chat-messages::-webkit-scrollbar-thumb { background: var(--border); }
+        .chat-msg {
+            display: flex; gap: 10px; max-width: 85%;
+            animation: msgIn 0.35s ease-out;
+        }
+        .chat-msg.user { flex-direction: row-reverse; align-self: flex-end; }
+        .chat-msg.agent { align-self: flex-start; }
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chat-msg .cm-avatar {
+            width: 34px; height: 34px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0;
+            background: var(--bg-light);
+        }
+        .chat-msg.user .cm-avatar { background: rgba(255,107,107,0.1); }
+        .chat-msg .cm-body {
+            padding: 10px 14px; font-size: 13px; line-height: 1.7;
+            background: var(--bg-light); border-radius: 8px;
+        }
+        .chat-msg.user .cm-body { background: rgba(255,107,107,0.06); }
+        .chat-msg .cm-name { font-size: 10px; font-weight: 700; color: var(--text-lighter); margin-bottom: 4px; }
+        .chat-msg.user .cm-name { color: var(--accent); }
+        .chat-msg .cm-text { color: var(--text-light); }
+        .chat-msg .cm-text strong { color: var(--text); }
+        .chat-input { padding: 8px 16px 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .chat-input .ci-btn {
+            padding: 8px 16px; font-size: 12px; font-weight: 600;
+            border: 1px solid var(--border); border-radius: 6px;
+            background: white; color: var(--text-light);
+            cursor: pointer; transition: all 0.25s;
+        }
+        .chat-input .ci-btn:hover {
+            background: var(--bg-light); border-color: var(--text-lighter);
+        }
+        .chat-input .ci-btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
+        .chat-input .ci-btn.primary:hover { opacity: 0.85; }
+        .chat-input .ci-input-wrap { display: flex; width: 100%; gap: 0; margin-top: 4px; }
+        .chat-input .ci-input {
+            flex: 1; padding: 8px 12px; font-size: 12px; font-family: inherit;
+            border: 1px solid var(--border); border-radius: 6px 0 0 6px;
+            background: var(--bg-light); color: var(--text); outline: none;
+        }
+        .chat-input .ci-input:focus { border-color: var(--accent); }
+        .chat-input .ci-send {
+            padding: 8px 14px; font-size: 14px;
+            border: 1px solid var(--border); border-left: none; border-radius: 0 6px 6px 0;
+            background: var(--bg-light); color: var(--text-lighter);
+            cursor: pointer; transition: all 0.25s;
+        }
+        .chat-input .ci-send:hover { background: var(--border); }
+        .chat-reset { padding: 0 16px 16px; text-align: center; }
+        .chat-reset button {
+            padding: 6px 16px; font-size: 11px; font-weight: 600;
+            border: 1px solid var(--border); border-radius: 6px;
+            background: white; color: var(--text-lighter);
+            cursor: pointer; transition: all 0.25s;
+        }
+        .chat-reset button:hover { background: var(--bg-light); }
+        .chat-msg .cm-card { background: white; border-radius: 8px; padding: 10px 12px; margin-top: 6px; border: 1px solid var(--border); }
+        .chat-msg .cm-card-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+        .chat-msg .cm-card-item:last-child { border-bottom: none; }
+        .chat-msg .cmi-rank { font-weight: 700; color: var(--text-lighter); min-width: 24px; }
+        .chat-msg .cmi-name { color: var(--text); flex: 1; font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--border); }
+        .chat-msg .cmi-score { color: var(--text-light); }
+        .chat-msg .cmi-tag { font-size: 9px; padding: 1px 6px; background: var(--bg-light); color: var(--text-lighter); border-radius: 3px; }
+        .chat-msg .cm-loading { display: flex; gap: 4px; padding: 4px 0; }
+        .chat-msg .cm-loading span { width: 8px; height: 8px; border-radius: 50%; background: var(--border); animation: loadDot 1.2s infinite; }
+        .chat-msg .cm-loading span:nth-child(2) { animation-delay: 0.2s; }
+        .chat-msg .cm-loading span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes loadDot { 0%,80%,100% { transform: scale(0.5); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+        .chat-msg .cm-checklist { margin: 4px 0; padding: 0; list-style: none; }
+        .chat-msg .cm-checklist li { padding: 3px 0; font-size: 12px; color: var(--text-light); display: flex; align-items: center; gap: 6px; }
+        .chat-msg .cm-checklist li::before { content: '▸'; color: var(--text-lighter); font-weight: 700; }
+
+        /* ===== Experience Cards ===== */
+        .exp-list { display: flex; flex-direction: column; gap: 16px; }
+        .exp-card {
+            background: white; border: 1px solid var(--border); border-radius: 12px;
+            padding: 24px 28px;
+        }
+        .exp-card .ec-h {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: 4px; margin-bottom: 6px; cursor: pointer;
+        }
+        .exp-card .ec-h h3 { font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
+        .exp-card .ec-h .dt { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-lighter); white-space: nowrap; }
+        .exp-card .ec-role { font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 10px; }
+        .pmr { display: flex; flex-direction: column; gap: 8px; }
+        .pmr .block { padding: 8px 12px; background: var(--bg-light); border-radius: 8px; border-left: 3px solid var(--border); }
+        .pmr .block.q { border-left-color: var(--accent); }
+        .pmr .block.m { border-left-color: #4a90d9; }
+        .pmr .block.r { border-left-color: var(--text-lighter); }
+        .pmr .block .bl-h { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+        .pmr .block .bl-h .tag { font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; }
+        .pmr .block.q .bl-h .tag { background: rgba(255,107,107,0.1); color: var(--accent); }
+        .pmr .block.m .bl-h .tag { background: rgba(74,144,217,0.1); color: #4a90d9; }
+        .pmr .block.r .bl-h .tag { background: var(--bg-light); color: var(--text-lighter); }
+        .pmr .block .bl-body { font-size: 13px; color: var(--text-light); line-height: 1.8; }
+        .pmr .arrow-item { display: flex; gap: 6px; align-items: flex-start; padding: 2px 0; }
+        .pmr .arrow-item .arr { color: var(--text-lighter); font-size: 11px; margin-top: 3px; flex-shrink: 0; width: 14px; text-align: center; }
+        .pmr .arrow-item .at { font-size: 13px; color: var(--text-light); line-height: 1.8; }
+        .pmr .arrow-item .at strong { color: var(--text); font-weight: 700; }
+
+        .ec-expand {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s;
+            opacity: 0;
+        }
+        .ec-expand.open { max-height: 800px; opacity: 1; }
+
+        .ec-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            margin-top: 8px; padding: 4px 12px; border: 1px solid var(--border); border-radius: 6px;
+            background: white; font-size: 11px; font-weight: 600; color: var(--text-lighter);
+            cursor: pointer; transition: all 0.25s; font-family: inherit;
+        }
+        .ec-btn:hover { background: var(--bg-light); color: var(--text); }
+
+        /* ===== Experience Carousel ===== */
+        .exp-carousel-wrap {
+            position: relative;
+            margin-top: 16px;
+        }
+
+        .exp-carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .exp-carousel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .exp-carousel-track .exp-card {
+            min-width: calc(100% - 40px);
+            max-width: calc(100% - 40px);
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .exp-carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: white;
+            color: var(--text-lighter);
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .exp-carousel-arrow:hover {
+            background: var(--bg-light);
+            color: var(--text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .exp-carousel-arrow:active {
+            transform: translateY(-50%) scale(0.92);
+        }
+
+        .exp-carousel-arrow.prev {
+            left: -20px;
+        }
+
+        .exp-carousel-arrow.next {
+            right: -20px;
+        }
+
+        .exp-carousel-arrow.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .exp-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .exp-carousel-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .exp-carousel-dots .dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .exp-carousel-arrow.prev { left: -12px; }
+            .exp-carousel-arrow.next { right: -12px; }
+            .exp-carousel-track .exp-card { min-width: calc(100% - 24px); padding: 16px 18px; }
+        }
+
+        #page6 {
+            padding: 80px 120px 80px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* ===== Background Apple Image ===== */
+        .p6-bg-layer {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .p6-bg-layer img {
+            max-width: 50%;
+            max-height: 70%;
+            object-fit: contain;
+            opacity: 0.35;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* ===== Glow Effects (kept from before) ===== */
+        .p6-glow {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .p6-glow.g1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(231,76,60,0.07) 0%, transparent 65%);
+            top: -120px;
+            right: -60px;
+            animation: glowPulse 5s ease-in-out infinite;
+        }
+
+        .p6-glow.g2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(39,174,96,0.05) 0%, transparent 65%);
+            bottom: -80px;
+            left: -80px;
+            animation: glowPulse 5s ease-in-out infinite 1.5s;
+        }
+
+        .p6-glow.g3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 60%);
+            top: 50%;
+            right: 15%;
+            animation: glowPulse 6s ease-in-out infinite 0.8s;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* ===== Clickable Hint ===== */
+        .p6-hint {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            user-select: none;
+        }
+
+        .p6-hint:hover {
+            transform: scale(1.03);
+        }
+
+        .p6-hint .hint-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+            animation: hintBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes hintBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+        }
+
+        .p6-hint .hint-label {
+            font-size: 14px;
+            color: var(--text-lighter);
+            letter-spacing: 2px;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .p6-hint:hover .hint-label {
+            opacity: 1;
+        }
+
+        .p6-hint .hint-arrow {
+            display: block;
+            font-size: 20px;
+            margin-top: 4px;
+            animation: hintArrow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes hintArrow {
+            0%, 100% { transform: translateY(0); opacity: 0.4; }
+            50% { transform: translateY(4px); opacity: 0.8; }
+        }
+
+        /* ===== Floating Wish Card ===== */
+        .p6-wish-float {
+            z-index: 9999;
+            font-size: 18px;
+            font-weight: 700;
+            color: #e74c3c;
+            letter-spacing: 2px;
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            white-space: nowrap;
+            pointer-events: none;
+            animation: p6wishFloat 3s ease-in-out infinite;
+            text-shadow: 0 2px 20px rgba(231,76,60,0.15), 0 4px 30px rgba(231,76,60,0.08);
+        }
+
+        @keyframes p6wishFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-12px); }
+        }
+
+        .p6-wish-float .pwf-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e74c3c;
+            margin-left: 8px;
+            vertical-align: middle;
+            animation: pwfDotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pwfDotPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.8); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .p6-wish-float { font-size: 15px; bottom: -40px; }
+        }
+
+        /* ===== Card Overlay ===== */
+        .p6-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(6px);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .p6-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* ===== The Card ===== */
+        .p6-card {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 0;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+            transform: scale(0.85) translateY(30px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            position: relative;
+            max-height: 90vh;
+        }
+
+        .p6-overlay.active .p6-card {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Card close button */
+        .p6-card-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(0,0,0,0.05);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--text-lighter);
+            transition: all 0.25s;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .p6-card-close:hover {
+            background: rgba(231,76,60,0.1);
+            color: #e74c3c;
+            transform: rotate(90deg);
+        }
+
+        /* Card left: Photo */
+        .p6-card-photo {
+            background: #faf8f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 24px;
+            overflow: hidden;
+        }
+
+        .p6-card-photo img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 20px rgba(231,76,60,0.15);
+            transition: transform 0.4s;
+        }
+
+        .p6-card:hover .p6-card-photo img {
+            transform: scale(1.04);
+        }
+
+        /* Card right: Content */
+        .p6-card-content {
+            padding: 36px 36px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            overflow-y: auto;
+        }
+
+        .p6-card-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: #e74c3c;
+            text-transform: uppercase;
+        }
+
+        .p6-card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .p6-card-text {
+            font-size: 14px;
+            line-height: 1.9;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .p6-card-text .hl {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .p6-card-text .space {
+            display: block;
+            height: 6px;
+        }
+
+        .p6-card-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            margin: 4px 0;
+        }
+
+        .p6-card-contact {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .p6-card-contact .cc-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.25s;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #faf8f7;
+        }
+
+        .p6-card-contact .cc-item:hover {
+            color: #e74c3c;
+            border-color: rgba(231,76,60,0.2);
+            background: rgba(231,76,60,0.04);
+            transform: translateY(-1px);
+        }
+
+        .p6-card-contact .cc-item .cci-icon {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            #page6 { padding: 60px 20px 40px; }
+            .p6-bg-layer img { max-width: 80%; max-height: 50%; opacity: 0.25; }
+            .p6-card { grid-template-columns: 1fr; max-width: 95%; }
+            .p6-card-photo { padding: 24px; }
+            .p6-card-photo img { width: 100px; height: 100px; }
+            .p6-card-content { padding: 24px 20px 20px; }
+            .p6-card-title { font-size: 17px; }
+            .p6-card-contact { flex-direction: column; gap: 8px; }
+            .p6-hint .hint-icon { font-size: 36px; }
+        }
+
+        /* ===== Email Toast ===== */
+        .p6-email-toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: var(--text);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .p6-email-toast.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* ===== Video Modal ===== */
+        .video-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+        }
+
+        .video-modal-overlay.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 960px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .video-modal-content video {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .video-modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 100px 24px 60px;
+            }
+
+            #page2 {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .id-card {
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .nav {
+                gap: 16px;
+            }
+
+            .project-card {
+                min-width: 280px;
+            }
+
+            .lines-container {
+                gap: 8px;
+                padding: 0 10px 0 30px;
+                height: 40vh;
+                top: 20%;
+            }
+
+            .lines-container .gap-space {
+                width: 14px;
+            }
+
+            .line-w .line-char {
+                font-size: 11px;
+                bottom: -14px;
+            }
+
+            .subtitle-wrapper {
+                bottom: 14%;
+            }
+
+            .subtitle-en {
+                font-size: 10px;
+                letter-spacing: 1px;
+                margin-bottom: 6px;
+            }
+
+            .page1-subtitle {
+                font-size: 32px;
+                letter-spacing: 4px;
+            }
+
+            .greeting-text {
+                left: 24px;
+                top: 38%;
+                animation: greeting-looped 6s ease-in-out infinite;
+            }
+
+            .greeting-text .greeting-line1 {
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+
+            .greeting-text .greeting-line2 {
+                font-size: 11px;
+            }
+
+            .greeting-text .greeting-line3 {
+                font-size: 12px;
+            }
+
+            .mailbox-icon {
+                right: 16px;
+                bottom: calc(14% + 60px);
+                top: auto;
+                transform: scale(0.7);
+                transform-origin: bottom right;
+            }
+
+            #page6 {
+                padding: 80px 24px 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#page1" class="logo">Lizii</a>
+
+    <nav class="nav">
+        <a href="#page2" class="nav-item" data-section="page2">About</a>
+        <a href="#page3" class="nav-item" data-section="page3">Projects</a>
+        <a href="#page5" class="nav-item" data-section="page5">Experience</a>
+        <a href="#page6" class="nav-item" data-section="page6">Contact</a>
+        <a href="huiben.html" class="nav-item" style="font-weight:300;opacity:0.5;font-size:13px;">绘本</a>
+    </nav>
+
+    <section id="page1" class="section">
+        <div class="greeting-text">
+            <div class="greeting-line1">HEY</div>
+            <div class="greeting-line2">welcome to my channel</div>
+            <div class="greeting-line3">I'm ready!</div>
+        </div>
+        <div class="lines-container" id="linesContainer"></div>
+        <div class="subtitle-wrapper">
+            <div class="subtitle-en">Direct Touching Bold Leaping</div>
+            <div class="page1-subtitle">直接触达 &nbsp;敢于创新</div>
+        </div>
+
+        <div class="mailbox-icon" id="mailboxIcon">
+            <div class="mb-body"></div>
+            <div class="mb-door"></div>
+            <div class="mb-post"></div>
+            <div class="mb-inner"></div>
+            <div class="mb-env-fly"></div>
+            <div class="mb-tip">✉ 点击复制邮箱</div>
+            <div class="mailbox-copy-toast">已复制邮箱</div>
+        </div>
+    </section>
+
+    <section id="page2" class="section">
+        <div class="id-card-wrapper">
+            <div class="id-card-strap"></div>
+            <div class="id-card">
+                <img src="study/个人头像.jpg" alt="Profile" class="id-card-photo">
+                <div class="id-card-name">李梓琪</div>
+                <div class="id-card-tags">
+                    <span class="id-card-tag">Explorer</span>
+                    <span class="id-card-tag">Storyteller</span>
+                    <span class="id-card-tag">Vibe Coder</span>
+                </div>
+                <div class="id-card-subtag">Keep thinking</div>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-label">/ 关于我</div>
+            <h2 class="about-title">
+                需求、技术、产品、系统，<br>
+                <span class="highlight">环环相扣！</span>
+            </h2>
+            <p class="about-text">
+                我喜欢做客户真正适用的产品。在自己vibe coding的过程中，让我真正全面地去了解一个产品长出来的过程。
+            </p>
+            <p class="about-text light">
+                喜欢探索and解决问题 关注教育与数学
+            </p>
+            <div class="about-values">
+                我希望我们做的事<br>
+                与社会发展需要我们做的事<br>
+                合力向上<br>
+                适应变化
+            </div>
+            <div class="about-girl">
+                <svg width="60" height="76" viewBox="0 0 60 76" fill="none" stroke="#999" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- hair -->
+                    <path d="M20 28 Q16 18 22 14 Q30 10 38 14 Q44 18 40 28" fill="rgba(0,0,0,0.04)" stroke="#888"/>
+                    <!-- left pigtail -->
+                    <path d="M20 28 Q14 36 12 44 Q14 40 18 34" stroke="#888" fill="none"/>
+                    <!-- right pigtail -->
+                    <path d="M40 28 Q46 36 48 44 Q46 40 42 34" stroke="#888" fill="none"/>
+                    <!-- face -->
+                    <ellipse cx="30" cy="32" rx="12" ry="11" fill="rgba(0,0,0,0.02)" stroke="#888"/>
+                    <!-- eyes -->
+                    <circle cx="26" cy="31" r="1.2" fill="#777"/>
+                    <circle cx="34" cy="31" r="1.2" fill="#777"/>
+                    <!-- smile -->
+                    <path d="M26 35 Q30 38 34 35" stroke="#777" stroke-width="0.7" fill="none"/>
+                    <!-- body / dress -->
+                    <path d="M22 43 Q20 52 18 64 L20 68 L30 66 L40 68 L42 64 Q40 52 38 43" fill="rgba(0,0,0,0.03)" stroke="#888"/>
+                    <!-- dress detail -->
+                    <path d="M24 50 L30 48 L36 50" stroke="#aaa" stroke-width="0.5" fill="none"/>
+                    <!-- left arm -->
+                    <path d="M22 45 Q16 48 14 52" stroke="#888" fill="none"/>
+                    <!-- right arm -->
+                    <path d="M38 45 Q44 48 46 52" stroke="#888" fill="none"/>
+                    <!-- left leg -->
+                    <path d="M24 66 L22 74" stroke="#888" fill="none"/>
+                    <!-- right leg -->
+                    <path d="M36 66 L38 74" stroke="#888" fill="none"/>
+                    <!-- shoes -->
+                    <ellipse cx="21" cy="74.5" rx="3" ry="1.5" fill="rgba(0,0,0,0.08)" stroke="none"/>
+                    <ellipse cx="39" cy="74.5" rx="3" ry="1.5" fill="rgba(0,0,0,0.08)" stroke="none"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="page3" class="section">
+        <div class="projects-header">
+            <h2>研究与项目</h2>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-nav-arrows">
+                <button class="carousel-arrow" onclick="moveCarousel(-1)">←</button>
+                <button class="carousel-arrow" onclick="moveCarousel(1)">→</button>
+            </div>
+
+            <div class="carousel-track" id="carouselTrack">
+                <div class="project-card" onclick="openVideoModal('study/supplychain.mp4')">
+                    <img src="study/supply-cover.png" alt="Supply Chain Agent" class="project-card-image">
+                    <div class="project-card-content">
+                        <div class="project-card-title">SOURCEMIND — AI-Powered Supply Chain Agent</div>
+                        <div class="project-card-tags">
+                            <span>LLM</span>
+                            <span>Decision Engine</span>
+                            <span>Product</span>
+                        </div>
+                        <div class="project-card-desc">
+                            Multi-criteria supplier evaluation engine combining IFN fuzzy logic, EXP-TODIM &amp; behavioral TOPSIS. Intelligent procurement agent with LLM-powered natural language interface.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openVideoModal('study/大大小小视频.mp4')">
+                    <img src="study/huiben-cover.png" alt="大大小小" class="project-card-image">
+                    <div class="project-card-content">
+                        <div class="project-card-title">大大小小 — 从产品思维出发的绘本创作</div>
+                        <div class="project-card-tags">
+                            <span>产品设计</span>
+                            <span>内容创作</span>
+                            <span>Interactive</span>
+                        </div>
+                        <div class="project-card-desc">
+                            A product-minded approach to storytelling — designing a 14-page illustrated flipbook with 3D page-flip interaction, narrative pacing, and cohesive visual language from concept to delivery.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openVideoModal('study/website-intro.mp4')">
+                    <img src="study/website-cover.png" alt="Personal Portfolio" class="project-card-image">
+                    <div class="project-card-content">
+                        <div class="project-card-title">个人作品集 — 交互驱动的品牌网站设计</div>
+                        <div class="project-card-tags">
+                            <span>Front-End</span>
+                            <span>UX Design</span>
+                            <span>Animation</span>
+                        </div>
+                        <div class="project-card-desc">
+                            Full-scroll single-page portfolio with custom SVG line interactions, 3D book flip, ripple &amp; vibration effects, Mario-coin swipe sound, and a cohesive warm-tone design system.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page5" class="section" style="max-width:1000px;margin:0 auto;">
+        <div class="sec-h" style="margin-bottom:32px;text-align:center;">
+            <h2 style="font-size:28px;font-weight:600;color:var(--text);">实习经历</h2>
+            <span class="label" style="font-size:12px;color:var(--text-lighter);">Experience · 产品思维驱动的工程实践</span>
+        </div>
+
+        <!-- SourceMind 对话式交互 Demo -->
+        <div class="chat-demo-wrap" style="margin-bottom:24px;">
+            <div class="chat-demo-header" onclick="toggleChatDemo()">
+                <span class="cdh-icon">💬</span>
+                <span class="cdh-title">体验 SourceMind 对话式选品</span>
+                <span class="cdh-badge">交互Demo</span>
+                <span class="cdh-arrow">▼</span>
+            </div>
+            <div class="chat-demo-body" id="chatDemoBody">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-msg agent">
+                        <div class="cm-avatar">🤖</div>
+                        <div class="cm-body">
+                            <div class="cm-name">SourceMind Agent</div>
+                            <div class="cm-text">你好！我是供应链智能选品助手。你可以告诉我需要采购什么产品，我来帮你智能筛选最优供应商组合。试试下面的预设场景 👇</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input" id="chatOptions"></div>
+                <div class="chat-reset" id="chatReset" style="display:none;">
+                    <button onclick="resetChatDemo()">↻ 重新演示</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 三段经历 左右滑动 -->
+        <div class="exp-carousel-wrap">
+            <button class="exp-carousel-arrow prev" onclick="moveExpCarousel(-1)">‹</button>
+            <div class="exp-carousel-container">
+                <div class="exp-carousel-track" id="expCarouselTrack">
+                    <div class="exp-card">
+                        <div class="ec-h" onclick="toggleEC(this)">
+                            <h3>SourceMind — 供应链智能选品Agent</h3>
+                            <span class="dt">2025 - 至今</span>
+                        </div>
+                        <div class="ec-role">独立项目 · 产品&amp;工程全栈</div>
+                        <div class="pmr">
+                            <div class="block q">
+                                <div class="bl-h"><span style="font-size:14px;">❓</span> 问题 <span class="tag">痛点</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">⚠</span><span class="at">1688平台上小微创业者采购原材料时，需要跨多个品类分别找供应商、比价、评估物流成本，流程繁琐且缺乏科学的决策依据</span></div>
+                                    <div class="arrow-item"><span class="arr">⚠</span><span class="at">1688官方采购助手仅支持单商品比价，无法处理<strong>"配齐整个产品"</strong>的场景</span></div>
+                                </div>
+                            </div>
+                            <div class="block m">
+                                <div class="bl-h"><span style="font-size:14px;">🛠</span> 方法 <span class="tag">方案</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>三层解耦架构</strong>：LLM+规则双模式降级引擎将用户自然语言拆解为结构化配件清单</span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>决策层工程化</strong>：将直觉模糊数(IFN) + EXP-TODIM + 行为TOPSIS从论文公式工程化为可运行的评估管线</span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>物流距离量化</strong>：基于31省邻接关系表和5级评分体系</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-expand">
+                            <div class="block r" style="margin-top:4px;">
+                                <div class="bl-h"><span style="font-size:14px;">✅</span> 结果 <span class="tag">成效</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">7维评估维度全部以用户可自行获取的数据为来源，<strong>不依赖任何平台API或爬虫黑科技</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">物流评分O(1)查表时间复杂度，<strong>单行录入格式</strong>将数据录入从<strong>5轮对话压缩为1行输入</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">交互流程重构将用户轮次从<strong>N轮降至1轮</strong>一次性采集</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ec-btn" onclick="toggleEC(this.closest('.exp-card').querySelector('.ec-h'))">展开结果 ▼</button>
+                    </div>
+
+                    <div class="exp-card">
+                        <div class="ec-h" onclick="toggleEC(this)">
+                            <h3>成都娄外科技有限公司（西瓜创客）— AI领航班</h3>
+                            <span class="dt">2024 - 2025</span>
+                        </div>
+                        <div class="ec-role">AI产品经理 · 实习</div>
+                        <div class="pmr">
+                            <div class="block q">
+                                <div class="bl-h"><span style="font-size:14px;">❓</span> 问题 <span class="tag">痛点</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">⚠</span><span class="at">课程内容既要讲清楚AI原理，又要让中小学生愿意学、能动手实践，<strong>传统PPT授课完不成这个任务</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">⚠</span><span class="at">课程运营中产生大量重复性工作，纯人工操作效率低，<strong>跟不上规模化营期节奏</strong>（单期269人）</span></div>
+                                </div>
+                            </div>
+                            <div class="block m">
+                                <div class="bl-h"><span style="font-size:14px;">🛠</span> 方法 <span class="tag">方案</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>课程体系设计</strong>：独立搭建AI领航班约20%核心知识图谱，设计<strong>13个"课后玩一玩"互动环节</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>AIGC内容生产</strong>：50%以上互动环节自主创作，通过AIGC工具批量生成<strong>25个内容原型</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>学员成果自动化</strong>：独立提出"AI智能抓取"方案，自动识别、抓取与分类归档</span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>规模化验证</strong>：方案覆盖三期营员共<strong>606人</strong>（一期269人/二期157人/三期180人）</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-expand">
+                            <div class="block r" style="margin-top:4px;">
+                                <div class="bl-h"><span style="font-size:14px;">✅</span> 结果 <span class="tag">成效</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">课程助力西瓜创客荣获<strong>多鲸"2025年度AI教育口碑品牌"</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">13个互动环节覆盖606名学员，<strong>80%好评率</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">完成<strong>25个AIGC内容原型</strong>，课程素材制作周期从逐个手工缩短为AI辅助快速迭代</span></div>
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">AI智能抓取方案将学员作品整理从<strong>2天→1个上午，效率提升约90%</strong></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ec-btn" onclick="toggleEC(this.closest('.exp-card').querySelector('.ec-h'))">展开结果 ▼</button>
+                    </div>
+
+                    <div class="exp-card">
+                        <div class="ec-h" onclick="toggleEC(this)">
+                            <h3>成都圭目机器人有限公司 — 道面缺陷检测</h3>
+                            <span class="dt">2023 - 2024</span>
+                        </div>
+                        <div class="ec-role">AI产品助理 · 实习</div>
+                        <div class="pmr">
+                            <div class="block q">
+                                <div class="bl-h"><span style="font-size:14px;">❓</span> 问题 <span class="tag">痛点</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">⚠</span><span class="at">道面缺陷检测依赖高质量图像标注数据，但<strong>标注质量不稳定</strong>，多人协作时偏差大</span></div>
+                                    <div class="arrow-item"><span class="arr">⚠</span><span class="at">标注资源存在<strong>结构性浪费</strong>——传统标注将整张图像等权处理</span></div>
+                                </div>
+                            </div>
+                            <div class="block m">
+                                <div class="bl-h"><span style="font-size:14px;">🛠</span> 方法 <span class="tag">方案</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>标准化流程搭建</strong>：独立制定道面检测数据标注标准SOP，建立常态化质量复核机制</span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>数据反馈闭环</strong>：通过错误模式分类驱动SOP迭代，将标注准确率稳定在<strong>85%以上</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>注意力权重分配方案</strong>：基于Self-Attention机制，提出关键区域标注资源倾斜的产品化方案</span></div>
+                                    <div class="arrow-item"><span class="arr">→</span><span class="at"><strong>实验验证</strong>：设计<strong>基线CNN与注意力机制CNN的对比实验</strong></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-expand">
+                            <div class="block r" style="margin-top:4px;">
+                                <div class="bl-h"><span style="font-size:14px;">✅</span> 结果 <span class="tag">成效</span></div>
+                                <div class="bl-body">
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">数据反馈闭环将标注准确率从<strong>70%+稳定在85%以上</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">注意力权重方案使<strong>关键区域标注准确率提升约8%</strong></span></div>
+                                    <div class="arrow-item"><span class="arr">▸</span><span class="at">方案在<strong>山东京博项目</strong>落地</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ec-btn" onclick="toggleEC(this.closest('.exp-card').querySelector('.ec-h'))">展开结果 ▼</button>
+                    </div>
+                </div>
+            </div>
+            <button class="exp-carousel-arrow next" onclick="moveExpCarousel(1)">›</button>
+            <div class="exp-carousel-dots" id="expCarouselDots">
+                <span class="dot active" onclick="goExpSlide(0)"></span>
+                <span class="dot" onclick="goExpSlide(1)"></span>
+                <span class="dot" onclick="goExpSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="page6" class="section">
+        <!-- Background image layer -->
+        <div class="p6-bg-layer">
+            <img src="最后一页.png" alt="Apple" draggable="false">
+        </div>
+
+        <!-- Glow effects -->
+        <div class="p6-glow g1"></div>
+        <div class="p6-glow g2"></div>
+        <div class="p6-glow g3"></div>
+
+        <!-- Clickable hint -->
+        <div class="p6-hint" onclick="openP6Card()">
+            <span class="hint-icon">🍎</span>
+            <span class="hint-label">点击苹果 了解更多</span>
+            <span class="hint-arrow">⌄</span>
+        </div>
+
+        <!-- Card overlay -->
+        <div class="p6-overlay" id="p6Overlay" onclick="closeP6Card(event)">
+            <div class="p6-card">
+                <button class="p6-card-close" onclick="closeP6Card(event)">✕</button>
+
+                <!-- Left: Photo -->
+                <div class="p6-card-photo">
+                    <img src="最后一页的照片.jpg" alt="李梓琪">
+                </div>
+
+                <!-- Right: Content -->
+                <div class="p6-card-content">
+                    <div class="p6-card-label">✦ 我的信念</div>
+                    <div class="p6-card-text">
+                        真正好的产品，永远是从<span class="hl">适合人需求</span>的角度去完成。
+                        <span class="space"></span>
+                        改善已知需求的同时，<span class="hl" style="font-weight:700;">适当创造需求。</span>
+                        <span class="space"></span>
+                        看清内心的渴望，坚持传递<span class="hl">生活的力量</span>。
+                        <span class="space"></span>
+                        <span style="font-size:12px;opacity:0.5;">work balance life · I believe the honest will help me.</span>
+                    </div>
+
+                    <div class="p6-card-divider"></div>
+
+                    <div class="p6-card-contact">
+                        <div class="cc-item" onclick="copyEmail()">
+                            <span class="cci-icon">✉</span>
+                            <span>2558383953@qq.com</span>
+                        </div>
+                        <div class="cc-item">
+                            <span class="cci-icon">📞</span>
+                            <span>19934600948</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+
+        /* ===== ID Card Shake on Click ===== */
+        document.querySelector('.id-card').addEventListener('click', function() {
+            this.classList.remove('shake');
+            void this.offsetWidth;
+            this.classList.add('shake');
+        });
+
+        /* ===== Decorative Lines System ===== */
+        const container = document.getElementById('linesContainer');
+        const TEXT = 'Direct Touching Bold Leaping';
+        const lines = [];
+        const lineStates = new Map();
+
+        const BASE_HEIGHT = Math.round(window.innerHeight * 0.48);
+        const isMobile = window.innerWidth <= 768;
+        const LINE_COLOR = '#000000';
+
+        function buildLines() {
+            container.innerHTML = '';
+
+            for (let i = 0; i < TEXT.length; i++) {
+                const ch = TEXT[i];
+
+                if (ch === ' ') {
+                    const gap = document.createElement('div');
+                    gap.className = 'gap-space';
+                    container.appendChild(gap);
+                    continue;
+                }
+
+                const heightVariation = (Math.random() * 0.2 - 0.1);
+                const h = Math.round(BASE_HEIGHT * (1 + heightVariation));
+                const vertOffset = Math.round((Math.random() * 4 - 2));
+                const tilt = Math.random() < 0.25 ? (Math.random() * 1 - 0.5) : 0;
+                const letterIdx = lines.length;
+                const dir = Math.random() < 0.5 ? 1 : -1;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'line-w';
+                wrapper.dataset.index = letterIdx;
+                wrapper.dataset.height = h;
+                wrapper.dataset.offset = vertOffset;
+                wrapper.dataset.tilt = tilt;
+                wrapper.style.marginBottom = vertOffset + 'px';
+                if (tilt) {
+                    wrapper.style.transform = 'rotate(' + tilt + 'deg)';
+                }
+
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('class', 'line-svg');
+                svg.setAttribute('viewBox', '0 0 10 ' + h);
+                svg.setAttribute('width', '10');
+                svg.setAttribute('height', h);
+                svg.style.flexShrink = '0';
+
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('class', 'line-path');
+                const mid = h / 2;
+                path.setAttribute('d', 'M 5,0 Q 5,' + mid + ' 5,' + h);
+                path.setAttribute('stroke', LINE_COLOR);
+                path.setAttribute('opacity', '0.6');
+                svg.appendChild(path);
+
+                wrapper.appendChild(svg);
+
+                const charSpan = document.createElement('span');
+                charSpan.className = 'line-char';
+                charSpan.textContent = ch;
+                wrapper.appendChild(charSpan);
+
+                const ripple = document.createElement('div');
+                ripple.className = 'line-ripple';
+                ripple.style.background = LINE_COLOR;
+                wrapper.appendChild(ripple);
+
+                const hit = document.createElement('div');
+                hit.className = 'line-hit';
+                hit.style.width = isMobile ? '12px' : '8px';
+                wrapper.appendChild(hit);
+
+                container.appendChild(wrapper);
+                lines.push({
+                    el: wrapper,
+                    path: path,
+                    svg: svg,
+                    ripple: ripple,
+                    height: h,
+                    mid: mid,
+                    dir: dir,
+                    index: letterIdx
+                });
+            }
+        }
+
+        function animateLineTo(index, targetOffset, duration) {
+            const lineData = lines[index];
+            if (!lineData) return;
+
+            const path = lineData.path;
+            const h = lineData.height;
+            const mid = lineData.mid;
+
+            if (lineStates.has(index)) {
+                cancelAnimationFrame(lineStates.get(index).rafId);
+            }
+
+            const currentD = path.getAttribute('d');
+            const match = currentD.match(/Q\s+(\d+\.?\d*)/);
+            const startOffset = match ? parseFloat(match[1]) - 5 : 0;
+            const startTime = performance.now();
+
+            function animate(time) {
+                const elapsed = time - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 2);
+                const currentOffset = startOffset + (targetOffset - startOffset) * eased;
+                path.setAttribute('d', 'M 5,0 Q ' + (5 + currentOffset) + ',' + mid + ' 5,' + h);
+
+                if (progress < 1) {
+                    lineStates.set(index, { rafId: requestAnimationFrame(animate), targetOffset: targetOffset });
+                } else {
+                    lineStates.delete(index);
+                }
+            }
+            lineStates.set(index, { rafId: requestAnimationFrame(animate), targetOffset: targetOffset });
+        }
+
+        function triggerRipple(index) {
+            const lineData = lines[index];
+            if (!lineData) return;
+
+            const ripple = lineData.ripple;
+            ripple.classList.remove('active');
+            void ripple.offsetWidth;
+            ripple.classList.add('active');
+            setTimeout(function() {
+                ripple.classList.remove('active');
+            }, 200);
+        }
+
+        function vibrateLine(index) {
+            const lineData = lines[index];
+            if (!lineData) return;
+            lineData.el.classList.remove('vibrate');
+            void lineData.el.offsetWidth;
+            lineData.el.classList.add('vibrate');
+            setTimeout(function() {
+                lineData.el.classList.remove('vibrate');
+            }, 200);
+        }
+
+        /* ===== Mario Coin Sound (Web Audio API) ===== */
+        let audioCtx = null;
+
+        function playMarioCoin() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                const t = audioCtx.currentTime;
+
+                const osc1 = audioCtx.createOscillator();
+                const gain1 = audioCtx.createGain();
+                osc1.connect(gain1);
+                gain1.connect(audioCtx.destination);
+                osc1.type = 'square';
+                osc1.frequency.setValueAtTime(1318.5, t);
+                gain1.gain.setValueAtTime(0.1, t);
+                gain1.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+                osc1.start(t);
+                osc1.stop(t + 0.08);
+
+                const osc2 = audioCtx.createOscillator();
+                const gain2 = audioCtx.createGain();
+                osc2.connect(gain2);
+                gain2.connect(audioCtx.destination);
+                osc2.type = 'square';
+                osc2.frequency.setValueAtTime(1568, t + 0.08);
+                gain2.gain.setValueAtTime(0.1, t + 0.08);
+                gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+                osc2.start(t + 0.08);
+                osc2.stop(t + 0.2);
+            } catch (e) {
+            }
+        }
+
+        /* ===== Rightward Swipe Detection for Mario Sound ===== */
+        let lastSwipeX = 0;
+        let lastSwipeTime = 0;
+        const SWIPE_THROTTLE = 300;
+        const SWIPE_THRESHOLD = 40;
+
+        document.addEventListener('mousemove', function(e) {
+            const rect = container.getBoundingClientRect();
+            if (e.clientY < rect.top || e.clientY > rect.bottom ||
+                e.clientX < rect.left || e.clientX > rect.right) {
+                lastSwipeX = 0;
+                return;
+            }
+
+            const now = Date.now();
+            if (now - lastSwipeTime < SWIPE_THROTTLE) return;
+
+            if (lastSwipeX === 0) {
+                lastSwipeX = e.clientX;
+                return;
+            }
+
+            const dx = e.clientX - lastSwipeX;
+            if (dx > SWIPE_THRESHOLD) {
+                lastSwipeTime = now;
+                playMarioCoin();
+            }
+            lastSwipeX = e.clientX;
+        });
+
+        function bendLine(index, bendDir) {
+            const lineData = lines[index];
+            if (!lineData) return;
+            const dir = bendDir || lineData.dir;
+            animateLineTo(index, dir * 4, 250);
+            triggerRipple(index);
+            vibrateLine(index);
+        }
+
+        function straightenLine(index) {
+            animateLineTo(index, 0, 250);
+        }
+
+        function handleLineHoverIn(index) {
+            const lineData = lines[index];
+            if (!lineData) return;
+            const path = lineData.path;
+            path.setAttribute('opacity', '1');
+            bendLine(index);
+        }
+
+        function handleLineHoverOut(index) {
+            const lineData = lines[index];
+            if (!lineData) return;
+            const path = lineData.path;
+            path.setAttribute('opacity', '0.6');
+            straightenLine(index);
+        }
+
+        function handleLineClick(index) {
+            const lineData = lines[index];
+            if (!lineData) return;
+
+            if (lineData.clicked) {
+                straightenLine(index);
+                lineData.clicked = false;
+                lineData.path.setAttribute('opacity', '0.6');
+            } else {
+                lineData.path.setAttribute('opacity', '1');
+                bendLine(index);
+                lineData.clicked = true;
+
+                setTimeout(function() {
+                    if (lineData.clicked) {
+                        straightenLine(index);
+                        lineData.path.setAttribute('opacity', '0.6');
+                        lineData.clicked = false;
+                    }
+                }, 2000);
+            }
+        }
+
+        buildLines();
+
+        if (!isMobile) {
+            lines.forEach(function(ld, idx) {
+                ld.el.addEventListener('mouseenter', function() { handleLineHoverIn(idx); });
+                ld.el.addEventListener('mouseleave', function() { handleLineHoverOut(idx); });
+            });
+        } else {
+            lines.forEach(function(ld, idx) {
+                ld.el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    handleLineClick(idx);
+                    playMarioCoin();
+                });
+            });
+        }
+
+        /* ===== Mailbox ===== */
+        var mailboxIcon = document.getElementById('mailboxIcon');
+        var mbInner = mailboxIcon.querySelector('.mb-inner');
+        var mbEnvFly = mailboxIcon.querySelector('.mb-env-fly');
+        var mbToast = mailboxIcon.querySelector('.mailbox-copy-toast');
+        var mbTip = mailboxIcon.querySelector('.mb-tip');
+        var EMAIL = '2558383953@qq.com';
+        var autoAnimTimer = null;
+        var isAnimating = false;
+
+        function showInnerLetter() {
+            mbInner.style.opacity = '1';
+            mbInner.style.transition = 'opacity 0.2s ease';
+        }
+
+        function hideInnerLetter() {
+            mbInner.style.opacity = '0';
+        }
+
+        function playAutoAnimation() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            mailboxIcon.style.animation = 'none';
+            void mailboxIcon.offsetWidth;
+            mailboxIcon.style.animation = 'mail-auto-tilt 2.5s ease-in-out';
+            mailboxIcon.style.animationFillMode = 'forwards';
+
+            mbEnvFly.style.animation = 'none';
+            void mbEnvFly.offsetWidth;
+            mbEnvFly.style.animation = 'env-auto-fly 2.5s ease-in-out';
+            mbEnvFly.style.animationFillMode = 'forwards';
+
+            setTimeout(function() {
+                mailboxIcon.style.animation = '';
+                mbEnvFly.style.animation = '';
+                isAnimating = false;
+            }, 2500);
+        }
+
+        function playClickAnimation() {
+            if (isAnimating) {
+                mailboxIcon.style.animation = '';
+                mbEnvFly.style.animation = '';
+                isAnimating = false;
+            }
+
+            mailboxIcon.style.animation = 'none';
+            void mailboxIcon.offsetWidth;
+            mailboxIcon.style.animation = 'mail-click-jump 0.6s ease-in-out';
+            mailboxIcon.style.animationFillMode = 'forwards';
+
+            mbEnvFly.style.animation = 'none';
+            void mbEnvFly.offsetWidth;
+            mbEnvFly.style.animation = 'env-click-fly 0.6s ease-in-out';
+            mbEnvFly.style.animationFillMode = 'forwards';
+
+            showInnerLetter();
+
+            setTimeout(function() {
+                mailboxIcon.style.animation = '';
+                mbEnvFly.style.animation = '';
+                hideInnerLetter();
+                isAnimating = false;
+            }, 600);
+        }
+
+        function showToast() {
+            mbToast.classList.remove('show');
+            void mbToast.offsetWidth;
+            mbToast.classList.add('show');
+            setTimeout(function() {
+                mbToast.classList.remove('show');
+            }, 1600);
+        }
+
+        function copyMail() {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(EMAIL).then(function() {
+                    showToast();
+                }).catch(function() {
+                    fallbackCopy();
+                });
+            } else {
+                fallbackCopy();
+            }
+        }
+
+        function fallbackCopy() {
+            try {
+                var ta = document.createElement('textarea');
+                ta.value = EMAIL;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast();
+            } catch (e) {
+                mbTip.textContent = '请手动复制: ' + EMAIL;
+                mbTip.style.opacity = '1';
+                setTimeout(function() {
+                    mbTip.textContent = '✉ 点击复制邮箱';
+                    mbTip.style.opacity = '0';
+                }, 3000);
+            }
+        }
+
+        mailboxIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            playClickAnimation();
+            setTimeout(function() {
+                copyMail();
+            }, 100);
+        });
+
+        autoAnimTimer = setInterval(playAutoAnimation, 3000);
+
+        setTimeout(function() {
+            playAutoAnimation();
+        }, 1000);
+
+        /* ===== Carousel ===== */
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+
+        function moveCarousel(direction) {
+            if (!track) return;
+            const cards = track.querySelectorAll('.project-card');
+            const totalSlides = cards.length;
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            const cardWidth = cards[0].offsetWidth + 24;
+            track.scrollTo({
+                left: currentSlide * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+    <!-- ===== Video Modal ===== -->
+    <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
+        <div class="video-modal-content" onclick="event.stopPropagation()">
+            <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+            <video id="modalVideo" controls autoplay playsinline>
+                <source id="modalVideoSource" src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        function openVideoModal(src) {
+            document.getElementById('modalVideoSource').src = src;
+            document.getElementById('modalVideo').load();
+            document.getElementById('videoModal').classList.add('active');
+        }
+
+        function closeVideoModal(e) {
+            if (e && e.target !== e.currentTarget) return;
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('active');
+            const video = document.getElementById('modalVideo');
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        /* ===== Chat Demo ===== */
+        var chatStep = 0;
+        var chatMsgs = document.getElementById('chatMessages');
+        var chatOpts = document.getElementById('chatOptions');
+        var chatReset = document.getElementById('chatReset');
+        var chatBody = document.getElementById('chatDemoBody');
+
+        function toggleChatDemo() {
+            var h = document.querySelector('.chat-demo-header');
+            chatBody.classList.toggle('open');
+            h.classList.toggle('open');
+            if (chatBody.classList.contains('open') && chatStep === 0) {
+                showChatOptions();
+            }
+        }
+
+        function addChatMsg(role, html) {
+            var div = document.createElement('div');
+            div.className = 'chat-msg ' + role;
+            if (role === 'agent') {
+                div.innerHTML = '<div class="cm-avatar">🤖</div><div class="cm-body"><div class="cm-name">SourceMind Agent</div><div class="cm-text">' + html + '</div></div>';
+            } else {
+                div.innerHTML = '<div class="cm-avatar">👤</div><div class="cm-body"><div class="cm-name">你</div><div class="cm-text">' + html + '</div></div>';
+            }
+            chatMsgs.appendChild(div);
+            chatMsgs.scrollTop = chatMsgs.scrollHeight;
+        }
+
+        function showChatOptions() {
+            chatOpts.innerHTML = '';
+            if (chatStep === 0) {
+                chatOpts.innerHTML = '<button class="ci-btn primary" onclick="chatDemoStep1()">💎 试试：配齐50套DIY手链材料</button>';
+            }
+            chatReset.style.display = 'none';
+            chatMsgs.scrollTop = chatMsgs.scrollHeight;
+        }
+
+        function showLoading(callback) {
+            var div = document.createElement('div');
+            div.className = 'chat-msg agent';
+            div.id = 'chatLoading';
+            div.innerHTML = '<div class="cm-avatar">🤖</div><div class="cm-body"><div class="cm-name">SourceMind Agent</div><div class="cm-loading"><span></span><span></span><span></span></div></div>';
+            chatMsgs.appendChild(div);
+            chatMsgs.scrollTop = chatMsgs.scrollHeight;
+            setTimeout(function() {
+                var ld = document.getElementById('chatLoading');
+                if (ld) ld.remove();
+                if (callback) callback();
+            }, 1200);
+        }
+
+        function chatDemoStep1() {
+            chatStep = 1;
+            addChatMsg('user', '💎 试试：配齐50套DIY手链材料');
+            showLoading(function() {
+                addChatMsg('agent', '好的！我来帮你拆解需求，请确认以下配件清单是否准确：<ul class="cm-checklist"><li><strong>珠子（8mm混色）</strong> — 约50份</li><li><strong>弹力线（0.8mm）</strong> — 约50份</li><li><strong>扣件套装（含龙虾扣+延长链）</strong> — 约50套</li><li><strong>包装盒（小号）</strong> — 约50个</li></ul>你可以点击下方按钮快速确认，或在输入框中输入你的修改需求 ✍️');
+                chatOpts.innerHTML = '<button class="ci-btn primary" onclick="chatDemoStep2a()">✅ 确认无误，开始搜索</button><div class="ci-input-wrap"><input class="ci-input" id="ciInput" placeholder="例如：珠子换成蓝色..." onkeydown="if(event.key===\'Enter\')chatDemoSendInput()"><button class="ci-send" onclick="chatDemoSendInput()">➤</button></div>';
+            });
+        }
+
+        function chatDemoSendInput() {
+            var input = document.getElementById('ciInput');
+            var val = input.value.trim();
+            if (!val) return;
+            input.value = '';
+            var kw = val.toLowerCase();
+            var confirmKw = ['确认', '无误', '没错', '可以', '好', 'confirm', 'yes', 'correct', 'ok', 'sure', 'right', 'go ahead'];
+            var isConfirm = false;
+            for (var i = 0; i < confirmKw.length; i++) { if (kw.indexOf(confirmKw[i]) >= 0) { isConfirm = true; break; } }
+            if (isConfirm) { chatDemoStep2a(); } else { chatDemoStep2Custom(val); }
+        }
+
+        function chatDemoStep2a() {
+            chatStep = 2;
+            addChatMsg('user', '确认无误，开始搜索吧');
+            showLoading(function() {
+                addChatMsg('agent', '🔍 正在根据 7 维评估指标（价格、风险、交付、服务、起批量、稳定性、物流距离）智能搜索最优供应商组合...<br><br>📍 收货地：四川省成都市<br>📊 评估算法：直觉模糊数(IFN) + EXP-TODIM + 行为TOPSIS');
+                setTimeout(function() {
+                    addChatMsg('agent', '📊 <strong>供应商综合排名结果</strong><div class="cm-card"><div class="cm-card-item"><span class="cmi-rank">#1</span><span class="cmi-name">义乌市晶德珠宝</span><span class="cmi-score">92.4分</span><span class="cmi-tag">🏆</span></div><div class="cm-card-item"><span class="cmi-rank">#2</span><span class="cmi-name">义乌市之九饰品</span><span class="cmi-score">87.1分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#3</span><span class="cmi-name">义乌市钜达饰品配件</span><span class="cmi-score">81.6分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#4</span><span class="cmi-name">义乌市水云阁珠宝</span><span class="cmi-score">76.8分</span><span class="cmi-tag"></span></div></div>🎯 推荐方案：晶德珠宝 + 之九饰品 组合采购，预计总成本 <strong>¥247-312</strong>，物流时效 2-3 天。');
+                    chatOpts.innerHTML = '';
+                    chatReset.style.display = 'block';
+                }, 1000);
+            });
+        }
+
+        function chatDemoStep2Custom(userText) {
+            chatStep = 2;
+            addChatMsg('user', userText);
+            showLoading(function() {
+                addChatMsg('agent', '已更新你的修改需求 ✅<br><br>已为你重新调整配件清单，现在开始搜索最优供应商组合...');
+                setTimeout(function() {
+                    addChatMsg('agent', '📊 <strong>供应商综合排名结果</strong><div class="cm-card"><div class="cm-card-item"><span class="cmi-rank">#1</span><span class="cmi-name">义乌市晶德珠宝</span><span class="cmi-score">93.2分</span><span class="cmi-tag">🏆</span></div><div class="cm-card-item"><span class="cmi-rank">#2</span><span class="cmi-name">义乌市之九饰品</span><span class="cmi-score">86.8分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#3</span><span class="cmi-name">义乌市钜达饰品配件</span><span class="cmi-score">80.5分</span><span class="cmi-tag"></span></div><div class="cm-card-item"><span class="cmi-rank">#4</span><span class="cmi-name">义乌市水云阁珠宝</span><span class="cmi-score">75.3分</span><span class="cmi-tag"></span></div></div>🎯 推荐方案：晶德珠宝 + 之九饰品 组合采购，预计总成本 <strong>¥262-330</strong>，物流时效 2-3 天。');
+                    chatOpts.innerHTML = '';
+                    chatReset.style.display = 'block';
+                }, 1000);
+            });
+        }
+
+        function resetChatDemo() {
+            chatStep = 0;
+            chatMsgs.innerHTML = '<div class="chat-msg agent"><div class="cm-avatar">🤖</div><div class="cm-body"><div class="cm-name">SourceMind Agent</div><div class="cm-text">你好！我是供应链智能选品助手。你可以告诉我需要采购什么产品，我来帮你智能筛选最优供应商组合。试试下面的预设场景 👇</div></div></div>';
+            chatReset.style.display = 'none';
+            showChatOptions();
+        }
+
+        /* ===== Toggle Expand/Collapse ===== */
+        function toggleEC(el) {
+            var card = el.closest('.exp-card');
+            var expand = card.querySelector('.ec-expand');
+            var btn = card.querySelector('.ec-btn');
+            expand.classList.toggle('open');
+            if (btn) {
+                var isOpen = expand.classList.contains('open');
+                btn.textContent = isOpen ? '收起结果 ▲' : '展开结果 ▼';
+            }
+        }
+
+        /* ===== Experience Carousel ===== */
+        var expCurrent = 0;
+        var expTotal = 3;
+
+        function updateExpCarousel() {
+            var track = document.getElementById('expCarouselTrack');
+            var dots = document.querySelectorAll('#expCarouselDots .dot');
+            var prev = document.querySelector('.exp-carousel-arrow.prev');
+            var next = document.querySelector('.exp-carousel-arrow.next');
+            var gap = 20;
+            var cardWidth = track.querySelector('.exp-card').offsetWidth;
+            track.style.transform = 'translateX(-' + (expCurrent * (cardWidth + gap)) + 'px)';
+            dots.forEach(function(d, i) {
+                d.classList.toggle('active', i === expCurrent);
+            });
+            prev.classList.toggle('disabled', expCurrent === 0);
+            next.classList.toggle('disabled', expCurrent === expTotal - 1);
+        }
+
+        function moveExpCarousel(dir) {
+            var newIdx = expCurrent + dir;
+            if (newIdx < 0 || newIdx >= expTotal) return;
+            expCurrent = newIdx;
+            updateExpCarousel();
+        }
+
+        function goExpSlide(idx) {
+            if (idx < 0 || idx >= expTotal) return;
+            expCurrent = idx;
+            updateExpCarousel();
+        }
+
+        window.addEventListener('resize', function() {
+             updateExpCarousel();
+         });
+
+         setTimeout(function() { updateExpCarousel(); }, 100);
+
+        /* ===== Copy Email ===== */
+        function copyEmail() {
+            var email = '2558383953@qq.com';
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(email).then(function() {
+                    showEmailToast();
+                }).catch(function() {
+                    fallbackEmailCopy(email);
+                });
+            } else {
+                fallbackEmailCopy(email);
+            }
+        }
+
+        function fallbackEmailCopy(email) {
+            var ta = document.createElement('textarea');
+            ta.value = email;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showEmailToast();
+        }
+
+        function showEmailToast() {
+            var existing = document.querySelector('.p6-email-toast');
+            if (existing) existing.remove();
+            var toast = document.createElement('div');
+            toast.className = 'p6-email-toast';
+            toast.textContent = '已复制邮箱地址';
+            document.body.appendChild(toast);
+            toast.classList.add('show');
+            setTimeout(function() {
+                toast.classList.remove('show');
+                setTimeout(function() { toast.remove(); }, 300);
+            }, 1600);
+        }
+
+        /* ===== Page6 Card Overlay ===== */
+        function openP6Card() {
+            document.getElementById('p6Overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            addWishFloat();
+        }
+
+        function addWishFloat() {
+            var existing = document.getElementById('p6WishFloat');
+            if (existing) existing.remove();
+            var overlay = document.getElementById('p6Overlay');
+            var card = overlay.querySelector('.p6-card');
+            var wish = document.createElement('div');
+            wish.id = 'p6WishFloat';
+            wish.className = 'p6-wish-float';
+            wish.innerHTML = '期待一起共事<span class="pwf-dot"></span>';
+            overlay.appendChild(wish);
+            var cardRect = card.getBoundingClientRect();
+            wish.style.position = 'fixed';
+            wish.style.left = '50%';
+            wish.style.top = (cardRect.bottom + 16) + 'px';
+            wish.style.transform = 'translateX(-50%)';
+        }
+
+        function closeP6Card(e) {
+            if (e && e.target !== e.currentTarget && !e.target.classList.contains('p6-card-close')) return;
+            document.getElementById('p6Overlay').classList.remove('active');
+            document.body.style.overflow = '';
+            var wish = document.getElementById('p6WishFloat');
+            if (wish) wish.remove();
+        }
+    </script>
+</body>
+</html>
